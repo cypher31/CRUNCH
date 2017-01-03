@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://Assets/tiles_spritesheet.tex" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 35, 35 )
+
+[node name="Enemy" type="Node2D" groups=[ "enemy" ]]
+
+transform/pos = Vector2( 32, -38 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemy" ]]
+
+transform/pos = Vector2( 3, 3 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 72, 0, 70, 70 )
+
+[node name="playerCheck" type="Area2D" parent="KinematicBody2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="playerCheck" type="CollisionShape2D" parent="KinematicBody2D/playerCheck"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="KinematicBody2D/playerCheck" to="KinematicBody2D" method="_on_playerCheck_body_enter"]
+
+

@@ -1,51 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="5" version="2.1" version_name="Godot Engine v2.1.stable.official">
+<resource_file type="TileSet" subresource_count="3" version="2.1" version_name="Godot Engine v2.1.stable.official">
 	<ext_resource path="res://Assets/tiles_spritesheet.tex" type="Texture" index="0"></ext_resource>
-	<resource type="ConvexPolygonShape2D" path="local://1">
+	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			-35, -35, 35, -35, 35, 35, -35, 35 </vector2_array>
-
-	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://4">
-		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			-35, 35, -35, -35, 35, -35, 35, 35 </vector2_array>
-
-	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://3">
-		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="9"> 			-25, 35, -24.2068, -15.5714, -19.3355, -25.0819, -13.5364, -31.1129, 1.30927, -34.1285, 9.89192, -31.5769, 19.4025, -24.154, 22.8819, -16.2673, 23.8098, 34.7648 </vector2_array>
+		<vector2 name="extents"> 35, 35 </vector2>
 
 	</resource>
 	<main_resource>
-		<string name="0/name"> "1" </string>
+		<string name="0/name"> "Sprite" </string>
 		<resource name="0/texture" external="0">  </resource>
 		<vector2 name="0/tex_offset"> 0, 0 </vector2>
-		<resource name="0/material"></resource>		<rect2 name="0/region"> 648, 0, 70, 70 </rect2>
+		<resource name="0/material"></resource>		<rect2 name="0/region"> 0, 0, 70, 70 </rect2>
 		<vector2 name="0/occluder_offset"> 35, 35 </vector2>
 		<resource name="0/occluder"></resource>		<vector2 name="0/navigation_offset"> 35, 35 </vector2>
 		<resource name="0/navigation"></resource>		<vector2 name="0/shape_offset"> 35, 35 </vector2>
 		<array name="0/shapes" len="1" shared="false">
 			<resource  resource_type="Shape2D" path="local://1">  </resource>
-		</array>
-		<string name="1/name"> "2" </string>
-		<resource name="1/texture" external="0">  </resource>
-		<vector2 name="1/tex_offset"> 0, 0 </vector2>
-		<resource name="1/material"></resource>		<rect2 name="1/region"> 504, 0, 70, 70 </rect2>
-		<vector2 name="1/occluder_offset"> 35, 35 </vector2>
-		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> 35, 35 </vector2>
-		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 35, 35 </vector2>
-		<array name="1/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://4">  </resource>
-		</array>
-		<string name="2/name"> "3" </string>
-		<resource name="2/texture" external="0">  </resource>
-		<vector2 name="2/tex_offset"> 0, 0 </vector2>
-		<resource name="2/material"></resource>		<rect2 name="2/region"> 863, 0, 50, 70 </rect2>
-		<vector2 name="2/occluder_offset"> 25, 35 </vector2>
-		<resource name="2/occluder"></resource>		<vector2 name="2/navigation_offset"> 25, 35 </vector2>
-		<resource name="2/navigation"></resource>		<vector2 name="2/shape_offset"> 25, 35 </vector2>
-		<array name="2/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://3">  </resource>
 		</array>
 
 	</main_resource>

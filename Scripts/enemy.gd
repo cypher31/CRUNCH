@@ -7,5 +7,6 @@ func _ready():
 
 
 func _on_playerCheck_body_enter( body ):
-	get_node("/root/global").setScene("res://Scenes/Dungeon_Fight.tscn")
+	if(body.is_in_group("player")):
+		get_node("/root/global").setScene("res://Scenes/Dungeon_Fight.tscn")
 	pass # replace with function body

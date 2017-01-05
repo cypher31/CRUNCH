@@ -13,9 +13,9 @@ extents = Vector2( 31.5664, 31.2404 )
 custom_solver_bias = 0.0
 extents = Vector2( 31.1897, 1.60823 )
 
-[node name="Player" type="Node2D" groups=[ "player" ]]
+[node name="Player" type="Node2D" groups=[ "playerRun" ]]
 
-[node name="player" type="KinematicBody2D" parent="." groups=[ "player" ]]
+[node name="player" type="KinematicBody2D" parent="." groups=[ "playerRun" ]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )

@@ -7,7 +7,6 @@ var distance = 100
 var duration = .5
 
 func _input(event):
-	#JUMP LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	if(event.is_action_pressed("left_punch") && isTweening == false):
 		new_label = Label.new()
 		add_child(new_label)

@@ -11,7 +11,7 @@ extents = Vector2( 31.4363, 31.2404 )
 
 [node name="Player" type="Node2D"]
 
-[node name="player" type="KinematicBody2D" parent="."]
+[node name="player" type="KinematicBody2D" parent="." groups=[ "playerFight" ]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -32,25 +32,12 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Tween" type="Tween" parent="player"]
 
-offset = Vector2( 256, 0 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = true
-smoothing/enable = false
-smoothing/speed = 5.0
-drag_margin/left = 0.0
-drag_margin/top = 0.0
-drag_margin/right = 0.0
-drag_margin/bottom = 0.0
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="new_label" type="Label" parent="."]
 

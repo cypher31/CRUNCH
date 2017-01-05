@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scenes/PlayerRun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/EnemyRun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=3]
 
 [node name="Dungeon" type="Node2D"]
@@ -10,17 +10,13 @@
 
 [node name="Player" parent="Player" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 662, -318 )
+transform/pos = Vector2( 662, -38 )
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy 2" parent="Enemies" instance=ExtResource( 2 )]
+[node name="Enemy" parent="Enemies" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1572, -108 )
-
-[node name="Enemy 3" parent="Enemies" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1572, -178 )
+transform/pos = Vector2( 1082, -38 )
 
 [node name="setPieces" type="Node" parent="."]
 

@@ -12,6 +12,7 @@ const FLOOR_ANGLE_TOLERANCE = 40
 const JUMP_MAX_AIRBORNE_TIME = 1
 
 #player variables
+var playerStartPosition
 var velocity = Vector2()
 var on_air_time = 100
 var force
@@ -20,6 +21,17 @@ var jump = false
 var prev_jump_pressed = false
 var jumping = false
 var grounded
+
+func _ready():
+	if(get_node("/root/global").playerRestart == true):
+		print(get_node("/root/global").playerStartPosition)
+		self.set_global_pos(get_node("/root/global").playerStartPosition * Vector2(1.1,1.1))
+#		get_node("/root/global").currentRunEnemy.queue_free()
+		get_node("/root/global").playerRestart = false
+		
+	set_fixed_process(true)
+	set_process_input(true)
+	pass
 
 func _fixed_process(delta):
 	
@@ -85,11 +97,6 @@ func _fixed_process(delta):
 
 func _input(event):
 	#JUMP LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	pass
-	
-func _ready():
-	set_fixed_process(true)
-	set_process_input(true)
 	pass
 
 func _on_groundCheck_body_enter( body ):

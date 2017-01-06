@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/playerRun.gd" type="Script" id=1]
 [ext_resource path="res://Assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -62,13 +63,12 @@ drag_margin/bottom = 0.0
 [node name="jumpTime" type="Timer" parent="player/TimerHolder"]
 
 process_mode = 1
-wait_time = 0.8
+wait_time = 0.5
 one_shot = true
 autostart = false
 
 [node name="groundCheck" type="Area2D" parent="player"]
 
-editor/display_folded = true
 transform/pos = Vector2( -0.454582, 31.5845 )
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
@@ -86,6 +86,33 @@ transform/pos = Vector2( 0.314026, 2.40899 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
+
+[node name="GUI" type="CanvasLayer" parent="player"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+script/script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="player/GUI"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 948.0
+margin/bottom = 586.0
+text = "Hello World"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="timeout" from="player/TimerHolder/jumpTime" to="player" method="_on_jumpTime_timeout"]
 

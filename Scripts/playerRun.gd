@@ -14,6 +14,7 @@ const JUMP_MAX_AIRBORNE_TIME = 1
 #player variables
 var playerStartPosition
 var velocity = Vector2()
+var jumpTime = false
 var on_air_time = 100
 var force
 var motion
@@ -25,16 +26,15 @@ var grounded
 func _ready():
 	if(get_node("/root/global").playerRestart == true):
 		print(get_node("/root/global").playerStartPosition)
-		self.set_global_pos(get_node("/root/global").playerStartPosition * Vector2(1.1,1.1))
+		self.set_global_pos(get_node("/root/global").playerStartPosition + Vector2(-50,0))
 #		get_node("/root/global").currentRunEnemy.queue_free()
 		get_node("/root/global").playerRestart = false
-		
+	
 	set_fixed_process(true)
 	set_process_input(true)
 	pass
 
 func _fixed_process(delta):
-	
 	force = Vector2(0, 0)
 	
 	#inputs for player
@@ -75,7 +75,6 @@ func _fixed_process(delta):
 			
 			
 		if(on_air_time == 0 and force.x == 0 and get_travel().length() < SLIDE_STOP_MIN_TRAVEL and abs(velocity.x) < SLIDE_STOP_VELOCITY and get_collider_velocity() == Vector2()):
-			
 			revert_motion()
 			velocity.y = 0.0
 		
@@ -92,11 +91,9 @@ func _fixed_process(delta):
 		#makes control more snappy
 		velocity.y = -JUMP_FORCE
 		jump = false
-	
 	pass
 
 func _input(event):
-	#JUMP LOGIC~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	pass
 
 func _on_groundCheck_body_enter( body ):

@@ -11,7 +11,7 @@ func _ready():
 func _fixed_process(delta):
 	if(health == 0):
 		get_node("/root/global").playerRestart = true
-		get_node("/root/global").setScene("res://Scenes/Dungeon.tscn")
+		get_node("/root/global").setScene("res://Scenes/Stage.tscn")
 		self.queue_free()
 	
 	pass

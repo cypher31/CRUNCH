@@ -2,12 +2,18 @@ extends Node
 
 #The currently active scene
 var currentScene = null
+
+#player globals
 var playerStartPosition
 var playerRestart = false
 var playerScore = 0
 
+#enemy globals
 var enemyToFight 
 var currentRunEnemy
+
+#GUI globals
+var levelText = "holder"
 
 #just some data for our game.  It could be HPs, Alignment, Direction, etc...
 var PlayerName = "Mike"

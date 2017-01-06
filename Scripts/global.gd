@@ -4,6 +4,7 @@ extends Node
 var currentScene = null
 var playerStartPosition
 var playerRestart = false
+var playerScore = 0
 
 var enemyToFight 
 var currentRunEnemy

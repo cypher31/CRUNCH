@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scenes/PlayerRun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/EnemyRun.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=3]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=4]
 
 [node name="Dungeon" type="Node2D"]
 
@@ -18,12 +19,34 @@ transform/pos = Vector2( 662, -38 )
 
 transform/pos = Vector2( 1082, -38 )
 
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2202, -318 )
+
+[node name="Coin1" parent="Coins" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2412, -248 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 2832, -318 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3182, -458 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 3742, -528 )
+
 [node name="setPieces" type="Node" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 70, 70 )
 cell/quadrant_size = 32
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )

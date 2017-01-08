@@ -24,10 +24,14 @@ func _fixed_process(delta):
 	var right_punch = Input.is_action_pressed("right_punch")
 
 	if(left_punch && right_punch):
-		#reset to first scene
-		get_node("/root/global").setScene("res://Scenes/Dungeon.tscn")
+		pass
 	else:
 		pass
+		
+		#change scene
+	if(get_node("/root/global").playerRestart == true && get_node("/root/global").timer == false):
+		get_tree().change_scene("res://Scenes/Dungeon.tscn")
+		get_node("/root/global").timer = true
 	
 func _input(event):
 	if(event.is_action_pressed("left_punch") && isTweening == false):

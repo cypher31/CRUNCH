@@ -14,7 +14,7 @@ script/script = ExtResource( 1 )
 
 editor/display_folded = true
 
-[node name="Player" parent="Player" instance=ExtResource( 2 )]
+[node name="Player" type="Node2D" parent="Player" groups=[ "playerRun" ] instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 242, -178 )
 
@@ -22,11 +22,11 @@ transform/pos = Vector2( 242, -178 )
 
 editor/display_folded = true
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
+[node name="Enemy" type="Node2D" parent="Enemies" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1082, -38 )
 
-[node name="Enemy 2" parent="Enemies" instance=ExtResource( 3 )]
+[node name="Enemy 2" type="Node2D" parent="Enemies" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 5282, -38 )
 
@@ -34,23 +34,23 @@ transform/pos = Vector2( 5282, -38 )
 
 editor/display_folded = true
 
-[node name="Coin" parent="Coins" instance=ExtResource( 4 )]
+[node name="Coin" type="Node2D" parent="Coins" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2132, -248 )
 
-[node name="Coin1" parent="Coins" instance=ExtResource( 4 )]
+[node name="Coin1" type="Node2D" parent="Coins" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2552, -318 )
 
-[node name="Coin2" parent="Coins" instance=ExtResource( 4 )]
+[node name="Coin2" type="Node2D" parent="Coins" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2972, -388 )
 
-[node name="Coin3" parent="Coins" instance=ExtResource( 4 )]
+[node name="Coin3" type="Node2D" parent="Coins" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 3392, -458 )
 
-[node name="Coin4" parent="Coins" instance=ExtResource( 4 )]
+[node name="Coin4" type="Node2D" parent="Coins" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 3812, -528 )
 

@@ -7,7 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 35, 35 )
 
-[node name="Tiles" type="Node"]
+[node name="Tiles" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
 
 [node name="Sprite" type="Sprite" parent="."]
 

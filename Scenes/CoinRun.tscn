@@ -10,6 +10,8 @@ extents = Vector2( 17.6602, 17.0766 )
 
 [node name="Coin" type="Node2D"]
 
+transform/scale = Vector2( 0.5, 0.5 )
+
 [node name="coinBody" type="StaticBody2D" parent="."]
 
 input/pickable = false
@@ -23,7 +25,6 @@ script/script = ExtResource( 1 )
 
 [node name="coinSprite" type="Sprite" parent="coinBody"]
 
-transform/pos = Vector2( -0.174828, 0 )
 texture = ExtResource( 2 )
 
 [node name="coinArea" type="Area2D" parent="coinBody" groups=[ "coin_gold" ]]

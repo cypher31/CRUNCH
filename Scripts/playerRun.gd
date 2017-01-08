@@ -25,9 +25,7 @@ var grounded
 
 func _ready():
 	if(get_node("/root/global").playerRestart == true):
-		print(get_node("/root/global").playerStartPosition)
-		self.set_global_pos(get_node("/root/global").playerStartPosition + Vector2(-50,0))
-#		get_node("/root/global").currentRunEnemy.queue_free()
+		self.set_global_pos(get_node("/root/global").playerStartPosition * Vector2(1.1,1))
 		get_node("/root/global").playerRestart = false
 	
 	set_fixed_process(true)

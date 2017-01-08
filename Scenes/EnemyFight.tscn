@@ -12,6 +12,19 @@ extents = Vector2( 35, 35 )
 
 transform/pos = Vector2( 32, -38 )
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = true
+
+[node name="itemHolder" type="Node2D" parent="."]
+
+transform/pos = Vector2( 3, 3 )
+
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemyFight" ]]
 
 transform/pos = Vector2( 3, 3 )
@@ -26,6 +39,13 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 72, 0, 70, 70 )
+
+[node name="SpriteDead" type="Sprite" parent="KinematicBody2D"]
+
+visibility/opacity = 0.0
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 0, 70, 70 )
 
 [node name="playerCheck" type="Area2D" parent="KinematicBody2D"]
 
@@ -43,6 +63,8 @@ angular_damp = 1.0
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[connection signal="timeout" from="Timers/Timer" to="KinematicBody2D" method="_on_Timer_timeout"]
 
 [connection signal="body_enter" from="KinematicBody2D/playerCheck" to="KinematicBody2D" method="_on_playerCheck_body_enter"]
 

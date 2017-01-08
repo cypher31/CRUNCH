@@ -40,6 +40,7 @@ _update_shape_index = 0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
+editor/display_folded = true
 offset = Vector2( 300, -100 )
 anchor_mode = 1
 rotating = false
@@ -58,7 +59,59 @@ drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
 
+[node name="GUI" type="Control" parent="player/Camera2D"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 3 )
+
+[node name="stageName" type="Label" parent="player/Camera2D/GUI"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -182.0
+margin/top = -381.0
+margin/right = 146.0
+margin/bottom = 407.0
+text = "Hello World"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="playerScore" type="Label" parent="player/Camera2D/GUI"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -183.0
+margin/top = -366.0
+margin/right = 147.0
+margin/bottom = 392.0
+text = "Hello World"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="TimerHolder" type="Node" parent="player"]
+
+editor/display_folded = true
 
 [node name="jumpTime" type="Timer" parent="player/TimerHolder"]
 
@@ -86,33 +139,6 @@ transform/pos = Vector2( 0.314026, 2.40899 )
 shape = SubResource( 2 )
 trigger = true
 _update_shape_index = 0
-
-[node name="GUI" type="CanvasLayer" parent="player"]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-script/script = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="player/GUI"]
-
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 948.0
-margin/bottom = 586.0
-text = "Hello World"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [connection signal="timeout" from="player/TimerHolder/jumpTime" to="player" method="_on_jumpTime_timeout"]
 

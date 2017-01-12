@@ -39,6 +39,13 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="invincibleTimer" type="Timer" parent="player"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = false
+autostart = true
+
 [node name="new_label" type="Label" parent="."]
 
 focus/ignore_mouse = true
@@ -53,12 +60,5 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script/script = ExtResource( 3 )
-
-[node name="Tween" type="Tween" parent="new_label"]
-
-playback/process_mode = 1
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
 
 

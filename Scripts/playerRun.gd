@@ -12,6 +12,7 @@ const FLOOR_ANGLE_TOLERANCE = 40
 const JUMP_MAX_AIRBORNE_TIME = 1
 
 #player variables
+var time
 var playerStartPosition
 var velocity = Vector2()
 var jumpTime = false
@@ -24,15 +25,21 @@ var jumping = false
 var grounded
 
 func _ready():
+	time = 1
 	if(get_node("/root/global").playerRestart == true):
 		self.set_global_pos(get_node("/root/global").playerStartPosition * Vector2(1.1,1))
 		get_node("/root/global").playerRestart = false
+		
+		#multiply the players current score by the combo to calculate the final score
+		get_node("/root/global").playerScore += (get_node("/root/global").playerCurrentCombo * get_node("/root/global").coin_gold_points * get_node("/root/global").coinsToMultiply)
 	
 	set_fixed_process(true)
+		
 	set_process_input(true)
 	pass
 
 func _fixed_process(delta):
+	time -= delta
 	force = Vector2(0, 0)
 	
 	#inputs for player
@@ -57,7 +64,8 @@ func _fixed_process(delta):
 	motion = velocity * delta
 	
 	#move the player
-	move(motion)
+	if(time <= 0):
+		move(motion)
 	
 	var floor_velocity = Vector2()
 	
@@ -89,9 +97,6 @@ func _fixed_process(delta):
 		#makes control more snappy
 		velocity.y = -JUMP_FORCE
 		jump = false
-	pass
-
-func _input(event):
 	pass
 
 func _on_groundCheck_body_enter( body ):

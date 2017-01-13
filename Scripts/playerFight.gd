@@ -9,7 +9,7 @@ var block = false
 var t 
 var isTweening = false
 var distance = 500
-var duration = .5
+var duration = .5 #change enemyAttack timer if you change this - they should match
 var scale = 4.0
 var isScale = false
 
@@ -78,12 +78,15 @@ func _input(event):
 	
 		isScale = true
 		t.interpolate_property(self, "transform/scale", Vector2(1,1), Vector2(scale,scale), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		t.interpolate_callback(self, duration, "reset_player")
+		t.interpolate_callback(self, duration * 2, "reset_player")
 		t.start()
 		isTweening = true
 		
 		#increase player combo
 		get_node("/root/global").playerCurrentCombo += 1
+		
+		#stop enemy attack
+		get_node("/root/global").playerBlocking = true
 		
 	#damage player if the button they press is wrong
 	if(event.is_action_pressed("left_punch") && isTweening == false):
@@ -97,13 +100,13 @@ func _input(event):
 	if(block == true && isTweening == false):
 		if(get_node("/root/global").currentButtonPrompt == "right" || get_node("/root/global").currentButtonPrompt == "left"):
 			t = Tween.new()
-		add_child(t)
-	
-		isScale = true
-		t.interpolate_property(self, "transform/scale", Vector2(1,1), Vector2(scale,scale), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		t.interpolate_callback(self, duration, "reset_player")
-		t.start()
-		isTweening = true
+			add_child(t)
+		
+			isScale = true
+			t.interpolate_property(self, "transform/scale", Vector2(1,1), Vector2(scale,scale), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			t.interpolate_callback(self, duration, "reset_player")
+			t.start()
+			isTweening = true
 
 func reset_player():
 	if(isScale):

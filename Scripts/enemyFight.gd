@@ -2,17 +2,25 @@ extends KinematicBody2D
 
 var time
 
-var health
 var playerStartPosition
 var enemyKilled = false
 var coinSpawn = true
 var coinCount = 0
 
+#Enemy variables
+var position
+
+#tween variables
+var t
+var distance = -500 #Should be same distance as player
+var duration = .5
+
 onready var coin = preload("res://Scenes/CoinFight.tscn")
 
 func _ready():
 	time = 0
-	health = 3
+	get_node("/root/global").enemyHealth = 100
+	position = self.get_pos()
 	set_fixed_process(true)
 	pass
 
@@ -20,13 +28,22 @@ func _fixed_process(delta):
 	time -= delta
 	get_node("/root/global").coinsToMultiply = coinCount
 	
+	if(get_node("/root/global").currentButtonPrompt == "block"):
+		get_parent().get_node("Timers/attackTimer").set_wait_time(.5) #should turn this into a global later
+		get_parent().get_node("Timers/attackTimer").start()
+		get_node("/root/global").stopButtonPrompts = true
+		
 	pass
 
 func _on_playerCheck_body_enter( body ):
-	if(body.is_in_group("playerFight") && health > 0):
-		health -= 1
+	if(body.is_in_group("playerFight") && get_node("/root/global").enemyHealth > 0 && !get_node("/root/global").enemyAttack == true):
+		get_node("/root/global").enemyHealth -= 25
 	
-	if(health <= 0 && coinSpawn == true):
+	if(body.is_in_group("playerFight") && get_node("/root/global").enemyAttack == true && get_node("/root/global").playerBlocking == false):
+		print("true")
+		get_node("/root/global").playerCurrentHealth -= 25 #change to enemy attack variable
+	
+	if(get_node("/root/global").enemyHealth <= 0 && coinSpawn == true):
 		get_node("/root/global").playerRestart = true
 		get_parent().get_node("Timers/Timer").start()
 		
@@ -48,8 +65,26 @@ func coinSpawn():
 		var gold_coin = coin.instance()
 		get_parent().get_node("itemHolder").add_child(gold_coin)
 		coinCount = get_parent().get_node("itemHolder").get_child_count()
-		get_node("/root/global").playerScore += coinCount * get_node("/root/global").coin_gold_points 
-	
+
+	get_node("/root/global").playerScore += coinCount * get_node("/root/global").coin_gold_points
 	coinSpawn = false
+
+#enemy attack function on timeout
+func _on_attackTimer_timeout():
+	if(get_node("/root/global").enemyHealth > 0):
+		get_node("/root/global").enemyAttack = true
+		#animate enemy
+		t = Tween.new()
+		add_child(t)
 	
-	
+		t.interpolate_property(self, "transform/pos", Vector2(0,0), Vector2(distance,0), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		t.interpolate_callback(self, duration, "reset_enemy")
+		t.start()
+		pass # replace with function body
+
+func reset_enemy():
+	self.set_pos(position)
+	get_node("/root/global").stopButtonPrompts = false #restart button prompts
+	get_node("/root/global").playerBlocking = false
+	get_node("/root/global").enemyAttack = false
+	t.queue_free()

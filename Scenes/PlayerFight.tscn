@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 31.4363, 31.2404 )
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=[ "player" ]]
 
 [node name="player" type="KinematicBody2D" parent="." groups=[ "playerFight" ]]
 

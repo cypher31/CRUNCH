@@ -8,7 +8,7 @@ var spawnBullet = true
 var t 
 var isTweening = false
 var distance = 1000
-var duration = 1.0
+var duration = 2.0
 
 var leftButton = preload("res://Scenes/leftButton.tscn")
 var rightButton = preload("res://Scenes/rightButton.tscn")
@@ -31,7 +31,10 @@ func _fixed_process(delta):
 	
 	#update player health
 	get_node("playerHealth").set_value(get_node("/root/global").playerCurrentHealth)
-		
+	
+	#update enemy health
+	get_node("enemyHealth").set_value(get_node("/root/global").enemyHealth)
+	
 	if(spawnBullet && time <= 0 && get_node("/root/global").stopButtonPrompts == false):
 		spawnBullet = false
 		get_node("buttonTimer").set_wait_time(duration)

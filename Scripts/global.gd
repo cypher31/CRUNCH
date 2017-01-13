@@ -5,12 +5,15 @@ var playerCurrentCombo = 0
 var playerCurrentHealth = 100
 var playerStartPosition
 var playerRestart = false
+var playerBlocking = false
 var playerScore = 0
 var currentButtonPrompt = null
 
 #enemy globals
 var enemyToFight 
 var currentRunEnemy
+var enemyHealth
+var enemyAttack = false
 
 #world variables
 var coin_gold_points = 5.0

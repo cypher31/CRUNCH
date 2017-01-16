@@ -5,8 +5,8 @@ extends KinematicBody2D
 
 #player variables
 var position
-var block = false
 var t 
+var block = false
 var isTweening = false
 var distance = 500
 var duration = .5 #change enemyAttack timer if you change this - they should match
@@ -20,6 +20,11 @@ func _ready():
 	position = self.get_pos()
 	set_fixed_process(true)
 	set_process_input(true)
+
+	get_node("/root/global").equipmentArray.append("Sword")
+	get_node("/root/global").equipmentArray.append("Shield")
+	get_node("/root/global").equipmentArray.append("Horn_Helm")
+	
 	pass
 
 func _fixed_process(delta):
@@ -38,6 +43,12 @@ func _fixed_process(delta):
 		block = false
 		pass
 		
+	if(get_node("/root/global").playerBlocking == true):
+		self.set_scale(Vector2(-1,1))
+	
+	if(get_node("/root/global").playerBlocking == false):
+		self.set_scale(Vector2(1,1))
+		
 	#change scene
 	if(get_node("/root/global").playerRestart == true && get_node("/root/global").timer == false):
 		get_tree().change_scene("res://Scenes/Dungeon.tscn")
@@ -55,6 +66,8 @@ func _input(event):
 		t.start()
 		isTweening = true
 		
+		get_node("/root/global").playerPressedButton = true
+		
 		#increase player combo
 		get_node("/root/global").playerCurrentCombo += 1
 	
@@ -68,62 +81,50 @@ func _input(event):
 		t.start()
 		isTweening = true
 		
-		#increase player combo
-		get_node("/root/global").playerCurrentCombo += 1
-		
-	if(block == true && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
-		#animate player
-		t = Tween.new()
-		add_child(t)
-	
-		isScale = true
-		t.interpolate_property(self, "transform/scale", Vector2(1,1), Vector2(scale,scale), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		t.interpolate_callback(self, duration * 2, "reset_player")
-		t.start()
-		isTweening = true
+		get_node("/root/global").playerPressedButton = true
 		
 		#increase player combo
 		get_node("/root/global").playerCurrentCombo += 1
 		
-		#stop enemy attack
+	if(block == true && get_node("/root/global").playerBlocking == false && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
+		#set blocking true
+		playerBlock()
 		get_node("/root/global").playerBlocking = true
 		
 	#damage player if the button they press is wrong
-	if(event.is_action_pressed("left_punch") && isTweening == false):
-		if(get_node("/root/global").currentButtonPrompt == "right" || block == true):
+	if(event.is_action_pressed("left_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
+		if(get_node("/root/global").currentButtonPrompt == "right"):
 			damagePlayer()
+			pass
 		
-	if(event.is_action_pressed("right_punch") && isTweening == false):
-		if(get_node("/root/global").currentButtonPrompt == "left" || block == true):
+	if(event.is_action_pressed("right_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
+		if(get_node("/root/global").currentButtonPrompt == "left"):
 			damagePlayer()
+			pass
 			
-	if(block == true && isTweening == false):
+	if(get_node("/root/global").playerBlocking == true):
 		if(get_node("/root/global").currentButtonPrompt == "right" || get_node("/root/global").currentButtonPrompt == "left"):
-			t = Tween.new()
-			add_child(t)
-		
-			isScale = true
-			t.interpolate_property(self, "transform/scale", Vector2(1,1), Vector2(scale,scale), duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-			t.interpolate_callback(self, duration, "reset_player")
-			t.start()
-			isTweening = true
+			pass
 
+#Reset player position after done attacking
 func reset_player():
-	if(isScale):
-		self.scale(Vector2(1/scale,1/scale))
-		isScale = false
-		
 	self.set_pos(position)
 	t.queue_free()
 	isTweening = false
 	
-	
+#Player takes damage when they press the wrong button prompt
 func damagePlayer():
 	get_node("invincibleTimer").start()
 	get_node("/root/global").playerCurrentHealth -= 25
 	get_node("/root/global").playerCurrentCombo = 0
 	get_tree().reload_current_scene()
 
+#Logic once player is dead
 func playerDead():
 	print("player dead :(")
 	get_tree().reload_current_scene()
+	
+func playerBlock():
+	get_node("/root/global").playerCurrentCombo += 1
+	get_node("/root/global").playerPressedButton = true
+	block = false

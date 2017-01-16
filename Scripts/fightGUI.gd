@@ -7,8 +7,8 @@ var buttonCheck
 var spawnBullet = true
 var t 
 var isTweening = false
-var distance = 1000
-var duration = 2.0
+var distance = 900
+var duration = 1.5
 
 var leftButton = preload("res://Scenes/leftButton.tscn")
 var rightButton = preload("res://Scenes/rightButton.tscn")
@@ -61,6 +61,8 @@ func _fixed_process(delta):
 			get_node("/root/global").currentButtonPrompt = "block"
 			add_child(new_button)
 			new_button.set_size(Vector2(70,70))
+			
+			get_node("/root/global").playerPressedButton = true
 		
 		t = Tween.new()
 		add_child(t)
@@ -75,6 +77,11 @@ func end_label():
 	t.queue_free()
 	isTweening = false
 	get_node("/root/global").currentButtonPrompt = "none"
+	
+	if(get_node("/root/global").playerPressedButton == true):
+		get_node("/root/global").playerPressedButton = false
+	elif(get_node("/root/global").playerPressedButton == false && get_node("/root/global").enemyHealth > 0):
+		get_node("/root/global").playerCurrentHealth -= 10
 
 func _on_buttonTimer_timeout():
 	spawnBullet = true

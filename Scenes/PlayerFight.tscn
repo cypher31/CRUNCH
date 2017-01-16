@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/playerFight.gd" type="Script" id=1]
 [ext_resource path="res://Assets/icon.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/punch_text.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Equipment.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,6 +26,16 @@ script/script = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 
+[node name="playerEquipment" type="Node2D" parent="player/Sprite"]
+
+script/script = ExtResource( 3 )
+
+[node name="Head" type="Sprite" parent="player/Sprite/playerEquipment"]
+
+[node name="Weapon" type="Sprite" parent="player/Sprite/playerEquipment"]
+
+[node name="Shield" type="Sprite" parent="player/Sprite/playerEquipment"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 
 shape = SubResource( 1 )
@@ -46,19 +56,13 @@ wait_time = 0.25
 one_shot = false
 autostart = true
 
-[node name="new_label" type="Label" parent="."]
+[node name="blockTimer" type="Timer" parent="player"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = -20.0
-margin/top = -46.0
-margin/right = 20.0
-margin/bottom = -32.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script/script = ExtResource( 3 )
+process_mode = 1
+wait_time = 0.55
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="player/blockTimer" to="player" method="_on_blockTimer_timeout"]
 
 

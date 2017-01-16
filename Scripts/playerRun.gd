@@ -33,6 +33,9 @@ func _ready():
 		#multiply the players current score by the combo to calculate the final score
 		get_node("/root/global").playerScore += (get_node("/root/global").playerCurrentCombo * get_node("/root/global").coin_gold_points * get_node("/root/global").coinsToMultiply)
 	
+	#Make sure enemy has health 
+	get_node("/root/global").enemyHealth = 100
+	
 	set_fixed_process(true)
 		
 	set_process_input(true)

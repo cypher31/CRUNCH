@@ -28,10 +28,6 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="itemHolder" type="Node2D" parent="."]
-
-transform/pos = Vector2( 3, 3 )
-
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemyFight" ]]
 
 transform/pos = Vector2( 3, 3 )
@@ -70,6 +66,8 @@ angular_damp = 1.0
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="itemHolder" type="Node2D" parent="KinematicBody2D"]
 
 [connection signal="timeout" from="Timers/Timer" to="KinematicBody2D" method="_on_Timer_timeout"]
 

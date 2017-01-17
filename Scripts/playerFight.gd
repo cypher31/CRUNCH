@@ -20,10 +20,6 @@ func _ready():
 	position = self.get_pos()
 	set_fixed_process(true)
 	set_process_input(true)
-
-	get_node("/root/global").equipmentArray.append("Sword")
-	get_node("/root/global").equipmentArray.append("Shield")
-	get_node("/root/global").equipmentArray.append("Horn_Helm")
 	
 	pass
 
@@ -95,15 +91,18 @@ func _input(event):
 	if(event.is_action_pressed("left_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
 		if(get_node("/root/global").currentButtonPrompt == "right"):
 			damagePlayer()
+			get_node("/root/global").currentButtonPrompt = "none"
 			pass
 		
 	if(event.is_action_pressed("right_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
 		if(get_node("/root/global").currentButtonPrompt == "left"):
 			damagePlayer()
+			get_node("/root/global").currentButtonPrompt = "none"
 			pass
 			
 	if(get_node("/root/global").playerBlocking == true):
 		if(get_node("/root/global").currentButtonPrompt == "right" || get_node("/root/global").currentButtonPrompt == "left"):
+			get_node("/root/global").currentButtonPrompt = "none"
 			pass
 
 #Reset player position after done attacking

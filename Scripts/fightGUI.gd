@@ -8,7 +8,7 @@ var spawnBullet = true
 var t 
 var isTweening = false
 var distance = 900
-var duration = 1.5
+var duration = 1.25
 
 var leftButton = preload("res://Scenes/leftButton.tscn")
 var rightButton = preload("res://Scenes/rightButton.tscn")
@@ -61,6 +61,7 @@ func _fixed_process(delta):
 			get_node("/root/global").currentButtonPrompt = "block"
 			add_child(new_button)
 			new_button.set_size(Vector2(70,70))
+			duration *= 1.0
 			
 			get_node("/root/global").playerPressedButton = true
 		
@@ -77,6 +78,7 @@ func end_label():
 	t.queue_free()
 	isTweening = false
 	get_node("/root/global").currentButtonPrompt = "none"
+	duration = 1.0
 	
 	if(get_node("/root/global").playerPressedButton == true):
 		get_node("/root/global").playerPressedButton = false

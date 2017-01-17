@@ -45,6 +45,9 @@ func _on_playerCheck_body_enter( body ):
 		get_node("/root/global").playerCurrentHealth -= 25 #change to enemy attack variable
 		get_node("/root/global").playerCurrentCombo = 0
 	
+	if(body.is_in_group("playerFight") && get_node("/root/global").enemyHealth > 0 && get_node("/root/global").playerBlocking == true):
+		get_node("/root/global").enemyHealth -=  (get_node("/root/global").playerAttackDmg * .25) / get_node("/root/global").enemyArmor
+	
 	if(get_node("/root/global").enemyHealth <= 0 && coinSpawn == true):
 		get_node("/root/global").playerRestart = true
 		get_parent().get_node("Timers/Timer").start()

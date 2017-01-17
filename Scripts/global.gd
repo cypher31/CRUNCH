@@ -19,6 +19,10 @@ var HEAD
 var WEAPON
 var SHIELD
 
+var selectedHelm
+var selectedWeapon
+var selectedShield
+
 #enemy globals
 var enemyToFight 
 var currentRunEnemy
@@ -38,17 +42,32 @@ var dungeonScene = ("res://Scenes/Dungeon.tscn")
 var dungeonFight = ("res://Scenes/Dungeon_Fight.tscn")
 
 #Potential Equipment
-var red_helm = preload("res://Assets/eq_red_helm.tex")
-var brown_shield = preload("res://Assets/eq_brown_shield.tex")
-var silver_sword = preload("res://Assets/eq_silver_sword.tex")
+var red_helm = preload("res://Assets/eq_red_helm.png")
+var bronze_helm = preload("res://Assets/eq_blue_helm.png")
+var gold_helm = preload("res://Assets/eq_gold_helm.png")
+
+var brown_shield = preload("res://Assets/eq_brown_shield.png")
+var silver_shield = preload("res://Assets/eq_silver_shield.png")
+var gold_shield = preload("res://Assets/eq_gold_shield.png")
+
+var bronze_sword = preload("res://Assets/eq_bronze_sword.png")
+var silver_sword = preload("res://Assets/eq_silver_sword.png")
+var gold_sword = preload("res://Assets/eq_gold_sword.png")
+
 
 #Equipment levels
 	#helms
 var red_helm_level = 1
+var bronze_helm_level = 2
+var gold_helm_level = 3
 	#shields
 var brown_shield_level = 1
+var silver_shield_level = 2
+var gold_shield_level = 3
 	#Weapons
-var silver_sword_level = 1
+var bronze_sword_level = 1
+var silver_sword_level = 2
+var gold_sword_level = 3
 
 #Potential Drops
 var equipmentArray = []

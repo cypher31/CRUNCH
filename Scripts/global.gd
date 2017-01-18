@@ -90,9 +90,18 @@ var bronze_sword_level = 1
 var silver_sword_level = 2
 var gold_sword_level = 3
 
+#Unlocked items
+var unlockedHELMS = {
+    0: red_helm,
+}
 
-#Potential Drops
-var equipmentArray = []
+var unlockedWEAPONS = {
+    0: bronze_sword,
+}
+
+var unlockedSHIELDS = {
+    0: brown_shield,
+}
 
 func _ready():
 	pass

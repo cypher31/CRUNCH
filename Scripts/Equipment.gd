@@ -11,7 +11,7 @@ func _ready():
 	
 	#set weapon if no selection is made
 	if(get_node("/root/global").selectedWeapon == null):
-		get_node("/root/global").WEAPON = get_node("/root/global").silver_sword
+		get_node("/root/global").WEAPON = get_node("/root/global").bronze_sword
 		#set weapon texture
 	get_node("Weapon").set_texture(get_node("/root/global").WEAPON)
 		#set weapon position

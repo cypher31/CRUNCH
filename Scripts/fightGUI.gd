@@ -17,6 +17,7 @@ var blockButton = preload("res://Scenes/blockButton.tscn")
 func _ready():
 	time = 1
 	set_fixed_process(true)
+	get_node("/root/global").stopButtonPrompts = false
 
 	get_node("/root/global").levelText = "Dungeon_Fight"
 	pass

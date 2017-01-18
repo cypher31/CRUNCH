@@ -105,8 +105,6 @@ func _fixed_process(delta):
 		velocity.y = -JUMP_FORCE
 		jump = false
 	pass
-	
-	print(grounded)
 
 func _on_groundCheck_body_enter( body ):
 	grounded = true

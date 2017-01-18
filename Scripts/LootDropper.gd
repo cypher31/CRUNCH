@@ -18,15 +18,18 @@ func _ready():
 		if(chooseItemClass == 0):
 			randNumber = randi() % get_node("/root/global").HELMS.size()
 			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber])
+			#Add helm to the unlocked helms dictionary
+			get_node("/root/global").unlockedHELMS[randNumber] = get_node("/root/global").HELMS[randNumber]
 		elif(chooseItemClass == 1):
 			randNumber = randi() % get_node("/root/global").WEAPONS.size()
 			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber])
+			get_node("/root/global").unlockedWEAPONS[randNumber] = get_node("/root/global").WEAPONS[randNumber]
 		elif(chooseItemClass == 2):
 			randNumber = randi() % get_node("/root/global").SHIELDS.size()
 			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber])
+			get_node("/root/global").unlockedSHIELDS[randNumber] = get_node("/root/global").SHIELDS[randNumber]
 
 	set_fixed_process(true)
-	print(dropChancePercentCheck)
 	pass
 	
 func _fixed_process(delta):

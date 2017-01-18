@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Assets/block.png" type="Texture" id=1]
+[ext_resource path="res://Assets/punchHigh.png" type="Texture" id=1]
+[ext_resource path="res://Assets/punchLow.png" type="Texture" id=2]
 
 [node name="blockButton" type="Control"]
 
@@ -21,15 +22,21 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 70.0
-margin/bottom = 70.0
+margin/right = 64.0
+margin/bottom = 64.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 
 [node name="Sprite" type="Sprite" parent="blockButton"]
 
+transform/pos = Vector2( -32, 0 )
 texture = ExtResource( 1 )
-modulate = Color( 0.148438, 1, 0, 1 )
+
+[node name="Sprite1" type="Sprite" parent="blockButton"]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 2 )
+flip_h = true
 
 

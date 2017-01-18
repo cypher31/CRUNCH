@@ -36,8 +36,9 @@ func _fixed_process(delta):
 	get_node("/root/global").selectedShield = get_node("shieldScroll/shield").get_selected()
 	
 	get_node("/root/global").SHIELD = shields[get_node("/root/global").selectedShield]
-	
-	if(Input.is_key_pressed(KEY_ESCAPE)):
-		get_tree().change_scene("res://Scenes/mainMenu.tscn")
 
 	pass
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://Scenes/mainMenu.tscn")
+	pass # replace with function body

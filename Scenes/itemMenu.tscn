@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://Scripts/itemMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/MainMenu Font.fnt" type="BitmapFont" id=2]
 
 [node name="itemMenu" type="Control"]
 
@@ -28,11 +29,12 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 0
 margin/left = 128.0
-margin/top = 64.0
+margin/top = 192.0
 margin/right = 768.0
-margin/bottom = 140.0
+margin/bottom = 268.0
 scroll/horizontal = true
 scroll/vertical = false
+__meta__ = { "_edit_group_":true }
 
 [node name="helm" type="HButtonArray" parent="CanvasLayer/helmScroll"]
 
@@ -90,11 +92,12 @@ focus/stop_mouse = true
 size_flags/horizontal = 0
 size_flags/vertical = 0
 margin/left = 128.0
-margin/top = 256.0
+margin/top = 320.0
 margin/right = 768.0
-margin/bottom = 320.0
+margin/bottom = 396.0
 scroll/horizontal = true
 scroll/vertical = false
+__meta__ = { "_edit_group_":true }
 
 [node name="weapon" type="HButtonArray" parent="CanvasLayer/weaponScroll"]
 
@@ -212,5 +215,25 @@ button/9/text = ""
 button/9/tooltip = ""
 button/9/icon = null
 button/selected = 0
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+
+rect/scale = Vector2( 1, 0.8 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 215.0
+margin/bottom = 80.0
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "BACK"
+flat = false
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_Button_pressed"]
 
 

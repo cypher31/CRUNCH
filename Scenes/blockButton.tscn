@@ -30,7 +30,6 @@ shortcut = null
 [node name="Sprite" type="Sprite" parent="blockButton"]
 
 texture = ExtResource( 1 )
-centered = false
 modulate = Color( 0.148438, 1, 0, 1 )
 
 

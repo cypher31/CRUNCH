@@ -49,6 +49,15 @@ func _fixed_process(delta):
 	if(get_node("/root/global").playerRestart == true && get_node("/root/global").timer == false):
 		get_tree().change_scene("res://Scenes/Dungeon.tscn")
 		get_node("/root/global").timer = true
+		
+	if(block == true && get_node("/root/global").playerBlocking == false && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
+		#set blocking true
+		get_node("/root/global").playerCurrentCombo += 1
+		get_node("/root/global").playerPressedButton = true
+		
+		get_node("/root/global").playerBlocking = true
+		playerBlock()
+		block = false
 	
 func _input(event):
 	#check current button prompt and attack if the player input matches that prompt
@@ -82,19 +91,22 @@ func _input(event):
 		#increase player combo
 		get_node("/root/global").playerCurrentCombo += 1
 		
-	if(block == true && get_node("/root/global").playerBlocking == false && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
-		#set blocking true
-		playerBlock()
-		get_node("/root/global").playerBlocking = true
-		
 	#damage player if the button they press is wrong
 	if(event.is_action_pressed("left_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
+		#damage player if they press both buttons at once
+		if(block == true):
+			damagePlayer()
+		
 		if(get_node("/root/global").currentButtonPrompt == "right"):
 			damagePlayer()
 			get_node("/root/global").currentButtonPrompt = "none"
 			pass
 		
 	if(event.is_action_pressed("right_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):
+		#damage player if they press both buttons at once
+		if(block == true):
+			damagePlayer()
+		
 		if(get_node("/root/global").currentButtonPrompt == "left"):
 			damagePlayer()
 			get_node("/root/global").currentButtonPrompt = "none"
@@ -120,10 +132,7 @@ func damagePlayer():
 
 #Logic once player is dead
 func playerDead():
-	print("player dead :(")
-	get_tree().reload_current_scene()
+	get_tree().change_scene("res://Scenes/mainMenu.tscn")
 	
 func playerBlock():
-	get_node("/root/global").playerCurrentCombo += 1
-	get_node("/root/global").playerPressedButton = true
-	block = false
+	pass

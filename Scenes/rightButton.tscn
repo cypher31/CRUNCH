@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://Assets/rightPunch.png" type="Texture" id=1]
+[ext_resource path="res://Assets/punchHigh.png" type="Texture" id=1]
 
 [node name="rightButton" type="Control"]
 
@@ -30,7 +30,6 @@ shortcut = null
 [node name="Sprite" type="Sprite" parent="rightButton"]
 
 texture = ExtResource( 1 )
-centered = false
 modulate = Color( 1, 0, 0, 1 )
 
 

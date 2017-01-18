@@ -13,7 +13,7 @@ extents = Vector2( 31.5664, 31.2404 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 31.1897, 1.60823 )
+extents = Vector2( 22.7216, 1.60823 )
 
 [node name="Player" type="Node2D" groups=[ "playerRun" ]]
 
@@ -71,6 +71,7 @@ drag_margin/bottom = 0.0
 
 [node name="GUI" type="Control" parent="player/Camera2D"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -132,7 +133,7 @@ autostart = false
 
 [node name="groundCheck" type="Area2D" parent="player"]
 
-transform/pos = Vector2( -0.454582, 31.5845 )
+transform/pos = Vector2( 0, 31.5845 )
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.314026, 2.40899 )

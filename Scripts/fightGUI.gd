@@ -7,7 +7,7 @@ var buttonCheck
 var spawnBullet = true
 var t 
 var isTweening = false
-var distance = 900
+var distance = 768
 var duration = 1.25
 
 var leftButton = preload("res://Scenes/leftButton.tscn")
@@ -25,8 +25,7 @@ func _fixed_process(delta):
 	time -= delta
 	
 	#update player score and combo
-	get_node("stageName").set_text(get_node("/root/global").levelText)
-	get_node("stageName/playerScore").set_text(str(get_node("/root/global").playerScore))
+	get_node("playerScore").set_text(str(get_node("/root/global").playerScore))
 	get_node("playerCombo").set_text(str(get_node("/root/global").playerCurrentCombo))
 	
 	#update player health
@@ -45,22 +44,22 @@ func _fixed_process(delta):
 		if(buttonCheck <= 5):
 			new_button = leftButton.instance()
 			get_node("/root/global").currentButtonPrompt = "left"
-			add_child(new_button)
-			new_button.set_size(Vector2(70,70))
+			get_node("promptSpawn").add_child(new_button)
+			new_button.set_size(Vector2(64,64))
 			
 		#instance right button prompt
 		if(buttonCheck > 5 && buttonCheck <= 10):
 			new_button = rightButton.instance()
 			get_node("/root/global").currentButtonPrompt = "right"
-			add_child(new_button)
-			new_button.set_size(Vector2(70,70))
+			get_node("promptSpawn").add_child(new_button)
+			new_button.set_size(Vector2(64,64))
 		
 		#instance block button prompt
 		if(buttonCheck > 10 && buttonCheck <= 15):
 			new_button = blockButton.instance()
 			get_node("/root/global").currentButtonPrompt = "block"
-			add_child(new_button)
-			new_button.set_size(Vector2(70,70))
+			get_node("promptSpawn").add_child(new_button)
+			new_button.set_size(Vector2(64,64))
 			duration *= 1.0
 			
 			get_node("/root/global").playerPressedButton = true

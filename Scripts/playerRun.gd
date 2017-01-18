@@ -42,6 +42,10 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
+	###DEBUG ONLY### To exit to main menu press ESC
+	if(Input.is_key_pressed(KEY_ESCAPE)):
+		get_tree().change_scene("res://Scenes/mainMenu.tscn")
+			
 	time -= delta
 	force = Vector2(0, 0)
 	
@@ -101,6 +105,8 @@ func _fixed_process(delta):
 		velocity.y = -JUMP_FORCE
 		jump = false
 	pass
+	
+	print(grounded)
 
 func _on_groundCheck_body_enter( body ):
 	grounded = true

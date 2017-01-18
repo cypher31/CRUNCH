@@ -69,6 +69,7 @@ var bronze_sword_level = 1
 var silver_sword_level = 2
 var gold_sword_level = 3
 
+
 #Potential Drops
 var equipmentArray = []
 

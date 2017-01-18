@@ -42,6 +42,8 @@ var dungeonScene = ("res://Scenes/Dungeon.tscn")
 var dungeonFight = ("res://Scenes/Dungeon_Fight.tscn")
 
 #Potential Equipment
+var noItemClasses = 3 #Number of item classes in game
+
 var red_helm = preload("res://Assets/eq_red_helm.png")
 var bronze_helm = preload("res://Assets/eq_blue_helm.png")
 var gold_helm = preload("res://Assets/eq_gold_helm.png")

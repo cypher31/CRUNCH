@@ -54,6 +54,25 @@ var bronze_sword = preload("res://Assets/eq_bronze_sword.png")
 var silver_sword = preload("res://Assets/eq_silver_sword.png")
 var gold_sword = preload("res://Assets/eq_gold_sword.png")
 
+#Set equipment dictionaries
+#Head items
+var HELMS = {
+    0: red_helm,
+    1: bronze_helm,
+    2: gold_helm
+}
+#Weapon items
+var WEAPONS = {
+    0: bronze_sword,
+    1: silver_sword,
+    2: gold_sword
+}
+#Shield items
+var SHIELDS = {
+    0: brown_shield,
+    1: silver_shield,
+    2: gold_shield
+}
 
 #Equipment levels
 	#helms

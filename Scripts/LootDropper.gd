@@ -5,13 +5,18 @@ extends Node2D
 # var b = "textvar"
 
 func _ready():
-	get_node("/root/global").equipmentArray = [get_node("/root/global").red_helm,get_node("/root/global").bronze_helm,get_node("/root/global").gold_helm,
-	get_node("/root/global").bronze_sword,get_node("/root/global").silver_sword,get_node("/root/global").gold_sword,
-	get_node("/root/global").brown_shield, get_node("/root/global").silver_shield,get_node("/root/global").gold_shield]
+	var chooseItemClass = randi() % 3
+	var randNumber = null
 	
-	var randNumber = randi() % get_node("/root/global").equipmentArray.size()
-	
-	get_node("Sprite").set_texture(get_node("/root/global").equipmentArray[randNumber])
+	if(chooseItemClass == 0):
+		randNumber = randi() % get_node("/root/global").HELMS.size()
+		get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber])
+	elif(chooseItemClass == 1):
+		randNumber = randi() % get_node("/root/global").WEAPONS.size()
+		get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber])
+	elif(chooseItemClass == 2):
+		randNumber = randi() % get_node("/root/global").SHIELDS.size()
+		get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber])
 
 	set_fixed_process(true)
 	pass

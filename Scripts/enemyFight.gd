@@ -37,6 +37,9 @@ func _fixed_process(delta):
 	pass
 
 func _on_playerCheck_body_enter( body ):
+	if(get_node("/root/global").enemyHealth <= 0):
+		enemyDead()
+	
 	if(body.is_in_group("playerFight") && get_node("/root/global").enemyHealth > 0 && !get_node("/root/global").enemyAttack == true):
 		get_node("/root/global").enemyHealth -=  get_node("/root/global").playerAttackDmg / get_node("/root/global").enemyArmor
 	
@@ -100,3 +103,7 @@ func reset_enemy():
 	get_node("/root/global").playerBlocking = false
 	get_node("/root/global").enemyAttack = false
 	t.queue_free()
+	
+func enemyDead():
+	#stop button prompts from showing up for player
+	get_node("/root/global").stopButtonPrompts = true

@@ -16,17 +16,25 @@ func _ready():
 		#Check if chance of item dropping is true
 	if(dropChancePercentCheck >= dropChancePercent):
 		if(chooseItemClass == 0):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").HELMS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber])
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber][0])
 			#Add helm to the unlocked helms dictionary
 			get_node("/root/global").unlockedHELMS[randNumber] = get_node("/root/global").HELMS[randNumber]
 		elif(chooseItemClass == 1):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").WEAPONS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber])
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber][0])
+			#Add helm to the unlocked helms dictionary
 			get_node("/root/global").unlockedWEAPONS[randNumber] = get_node("/root/global").WEAPONS[randNumber]
 		elif(chooseItemClass == 2):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").SHIELDS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber])
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber][0])
+			#Add helm to the unlocked helms dictionary
 			get_node("/root/global").unlockedSHIELDS[randNumber] = get_node("/root/global").SHIELDS[randNumber]
 
 	set_fixed_process(true)

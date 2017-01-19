@@ -1,7 +1,6 @@
 extends Node
 
 #User globals
-var userUnlockedItems = []
 
 #player globals
 var playerCurrentCombo = 0
@@ -45,7 +44,7 @@ var dungeonFight = ("res://Scenes/Dungeon_Fight.tscn")
 var noItemClasses = 3 #Number of item classes in game
 
 var red_helm = preload("res://Assets/eq_red_helm.png")
-var bronze_helm = preload("res://Assets/eq_blue_helm.png")
+var blue_helm = preload("res://Assets/eq_blue_helm.png")
 var gold_helm = preload("res://Assets/eq_gold_helm.png")
 
 var brown_shield = preload("res://Assets/eq_brown_shield.png")
@@ -56,51 +55,37 @@ var bronze_sword = preload("res://Assets/eq_bronze_sword.png")
 var silver_sword = preload("res://Assets/eq_silver_sword.png")
 var gold_sword = preload("res://Assets/eq_gold_sword.png")
 
-#Set equipment dictionaries
+#Set equipment dictionaries setup as:: [item, level]
 #Head items
 var HELMS = {
-    0: red_helm,
-    1: bronze_helm,
-    2: gold_helm
+    0: [red_helm, 1],
+    1: [blue_helm, 2],
+    2: [gold_helm, 3]
 }
 #Weapon items
 var WEAPONS = {
-    0: bronze_sword,
-    1: silver_sword,
-    2: gold_sword
+    0: [bronze_sword, 1],
+    1: [silver_sword, 2],
+    2: [gold_sword, 3]
 }
 #Shield items
 var SHIELDS = {
-    0: brown_shield,
-    1: silver_shield,
-    2: gold_shield
+    0: [brown_shield, 1],
+    1: [silver_shield, 2],
+    2: [gold_shield, 3]
 }
-
-#Equipment levels
-	#helms
-var red_helm_level = 1
-var bronze_helm_level = 2
-var gold_helm_level = 3
-	#shields
-var brown_shield_level = 1
-var silver_shield_level = 2
-var gold_shield_level = 3
-	#Weapons
-var bronze_sword_level = 1
-var silver_sword_level = 2
-var gold_sword_level = 3
 
 #Unlocked items
 var unlockedHELMS = {
-    0: red_helm,
+    0: [red_helm, 1]
 }
 
 var unlockedWEAPONS = {
-    0: bronze_sword,
+    0: [bronze_sword, 1]
 }
 
 var unlockedSHIELDS = {
-    0: brown_shield,
+    0: [brown_shield, 1]
 }
 
 func _ready():

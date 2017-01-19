@@ -3,7 +3,7 @@ extends Node
 func _ready():
 	#set helm armor if no selection is made
 	if(get_node("/root/global").selectedHelm == null):
-		get_node("/root/global").HEAD = get_node("/root/global").red_helm
+		get_node("/root/global").HEAD = get_node("/root/global").HELMS[0][0]
 		#set helm texture
 	get_node("Head").set_texture(get_node("/root/global").HEAD)
 		#set helm position
@@ -11,7 +11,7 @@ func _ready():
 	
 	#set weapon if no selection is made
 	if(get_node("/root/global").selectedWeapon == null):
-		get_node("/root/global").WEAPON = get_node("/root/global").bronze_sword
+		get_node("/root/global").WEAPON = get_node("/root/global").WEAPONS[0][0]
 		#set weapon texture
 	get_node("Weapon").set_texture(get_node("/root/global").WEAPON)
 		#set weapon position
@@ -21,7 +21,7 @@ func _ready():
 	
 	#set shield if no selection is made
 	if(get_node("/root/global").selectedShield == null):
-		get_node("/root/global").SHIELD = get_node("/root/global").brown_shield
+		get_node("/root/global").SHIELD = get_node("/root/global").SHIELDS[0][0]
 		#set shield texture
 	get_node("Shield").set_texture(get_node("/root/global").SHIELD)
 		#set shield position

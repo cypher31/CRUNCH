@@ -84,6 +84,7 @@ func end_label():
 		get_node("/root/global").playerPressedButton = false
 	elif(get_node("/root/global").playerPressedButton == false && get_node("/root/global").enemyHealth > 0):
 		get_node("/root/global").playerCurrentHealth -= 10
+		get_node("/root/global").playerCurrentCombo = 0
 
 func _on_buttonTimer_timeout():
 	spawnBullet = true

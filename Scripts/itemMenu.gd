@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready():
+<<<<<<< HEAD
 	for i in range(get_node("/root/global").HELMS.size()):
 		get_node("helmScroll/helm").add_button("",str(get_node("/root/global").HELMS[i][2]))
 		
@@ -9,7 +10,13 @@ func _ready():
 		
 	for i in range(get_node("/root/global").SHIELDS.size()):
 		get_node("shieldScroll/shield").add_button("",str(get_node("/root/global").SHIELDS[i][2]))
-
+	
+	for i in range(get_node("/root/global").HELMS.size()):
+		if(get_node("/root/global").unlockedHELMS.has(i)):
+			get_node("helmScroll/helm").set_button_icon(i, get_node("/root/global").unlockedHELMS[i][0])
+		
+	for i in range(get_node("/root/global").WEAPONS.size()):
+=======
 	#create buttons for # of items in each array
 	for i in range(get_node("/root/global").HELMS.size()):
 		get_node("helmScroll/helm").add_button(" ", " ")
@@ -20,10 +27,19 @@ func _ready():
 	for i in range(get_node("/root/global").WEAPONS.size()):
 		get_node("weaponScroll/weapon").add_button(" ", " ")
 		
+>>>>>>> refs/remotes/origin/player-equipment-level
 		if(get_node("/root/global").unlockedWEAPONS.has(i)):
 			get_node("weaponScroll/weapon").set_button_icon(i, get_node("/root/global").unlockedWEAPONS[i][0])
 		
 	for i in range(get_node("/root/global").SHIELDS.size()):
+<<<<<<< HEAD
+		if(get_node("/root/global").unlockedSHIELDS.has(i)):
+			get_node("shieldScroll/shield").set_button_icon(i, get_node("/root/global").unlockedSHIELDS[i][0])
+	
+=======
+		get_node("shieldScroll/shield").add_button(" ", " ")
+>>>>>>> refs/remotes/origin/player-equipment-level
+		
 		if(get_node("/root/global").unlockedSHIELDS.has(i)):
 			get_node("shieldScroll/shield").set_button_icon(i, get_node("/root/global").unlockedSHIELDS[i][0])
 			
@@ -39,8 +55,15 @@ func _fixed_process(delta):
 	get_node("/root/global").WEAPON = get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][0]
 	
 	get_node("/root/global").selectedShield = get_node("shieldScroll/shield").get_selected()
+<<<<<<< HEAD
+	get_node("/root/global").SHIELD = get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield]
+	
+	get_node("/root/global").playerLevel = get_node("/root/global").HEAD[1] + get_node("/root/global").WEAPON[1] + get_node("/root/global").SHIELD[1]
+
+=======
 	get_node("/root/global").SHIELD = get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][0]
 	
+>>>>>>> refs/remotes/origin/player-equipment-level
 	pass
 
 func _on_Button_pressed():

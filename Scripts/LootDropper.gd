@@ -16,22 +16,43 @@ func _ready():
 		#Check if chance of item dropping is true
 	if(dropChancePercentCheck >= dropChancePercent):
 		if(chooseItemClass == 0):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").HELMS.size()
+<<<<<<< HEAD
 			#grab sprite from the potential helms
 			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber][0])
 			#Add found item to dictionary
+=======
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber][0])
+			#Add helm to the unlocked helms dictionary
+>>>>>>> refs/remotes/origin/player-equipment-level
 			get_node("/root/global").unlockedHELMS[randNumber] = get_node("/root/global").HELMS[randNumber]
 		elif(chooseItemClass == 1):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").WEAPONS.size()
+<<<<<<< HEAD
 			#grab sprite from potential weapons
 			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber][0])
 			#Add found item to dictionary
+=======
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber][0])
+			#Add helm to the unlocked helms dictionary
+>>>>>>> refs/remotes/origin/player-equipment-level
 			get_node("/root/global").unlockedWEAPONS[randNumber] = get_node("/root/global").WEAPONS[randNumber]
 		elif(chooseItemClass == 2):
+			#choose random item
 			randNumber = randi() % get_node("/root/global").SHIELDS.size()
+<<<<<<< HEAD
 			#grab sprite from potential shields
 			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber][0])
 			#Add found item to dictionary
+=======
+			#Grab the texture from a random item in the array
+			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber][0])
+			#Add helm to the unlocked helms dictionary
+>>>>>>> refs/remotes/origin/player-equipment-level
 			get_node("/root/global").unlockedSHIELDS[randNumber] = get_node("/root/global").SHIELDS[randNumber]
 
 	set_fixed_process(true)

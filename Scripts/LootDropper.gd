@@ -17,16 +17,21 @@ func _ready():
 	if(dropChancePercentCheck >= dropChancePercent):
 		if(chooseItemClass == 0):
 			randNumber = randi() % get_node("/root/global").HELMS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber])
-			#Add helm to the unlocked helms dictionary
+			#grab sprite from the potential helms
+			get_node("Sprite").set_texture(get_node("/root/global").HELMS[randNumber][0])
+			#Add found item to dictionary
 			get_node("/root/global").unlockedHELMS[randNumber] = get_node("/root/global").HELMS[randNumber]
 		elif(chooseItemClass == 1):
 			randNumber = randi() % get_node("/root/global").WEAPONS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber])
+			#grab sprite from potential weapons
+			get_node("Sprite").set_texture(get_node("/root/global").WEAPONS[randNumber][0])
+			#Add found item to dictionary
 			get_node("/root/global").unlockedWEAPONS[randNumber] = get_node("/root/global").WEAPONS[randNumber]
 		elif(chooseItemClass == 2):
 			randNumber = randi() % get_node("/root/global").SHIELDS.size()
-			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber])
+			#grab sprite from potential shields
+			get_node("Sprite").set_texture(get_node("/root/global").SHIELDS[randNumber][0])
+			#Add found item to dictionary
 			get_node("/root/global").unlockedSHIELDS[randNumber] = get_node("/root/global").SHIELDS[randNumber]
 
 	set_fixed_process(true)

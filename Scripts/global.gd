@@ -7,6 +7,7 @@ var userUnlockedItems = []
 var playerCurrentCombo = 0
 var playerCurrentHealth = 100
 var playerAttackDmg = 25
+var playerLevel = 0
 var playerStartPosition
 var playerPressedButton = false
 var playerRestart = false
@@ -59,21 +60,21 @@ var gold_sword = preload("res://Assets/eq_gold_sword.png")
 #Set equipment dictionaries
 #Head items
 var HELMS = {
-    0: red_helm,
-    1: bronze_helm,
-    2: gold_helm
+    0: [red_helm, 1, 100000],
+    1: [bronze_helm, 2, 200000],
+    2: [gold_helm, 3, 300000]
 }
 #Weapon items
 var WEAPONS = {
-    0: bronze_sword,
-    1: silver_sword,
-    2: gold_sword
+    0: [bronze_sword, 1, 100000],
+    1: [silver_sword, 2, 200000],
+    2: [gold_sword, 3, 300000]
 }
 #Shield items
 var SHIELDS = {
-    0: brown_shield,
-    1: silver_shield,
-    2: gold_shield
+    0: [brown_shield, 1, 100000],
+    1: [silver_shield, 2, 200000],
+    2: [gold_shield, 3, 300000]
 }
 
 #Equipment levels
@@ -92,15 +93,15 @@ var gold_sword_level = 3
 
 #Unlocked items
 var unlockedHELMS = {
-    0: red_helm,
+    0: HELMS[0],
 }
 
 var unlockedWEAPONS = {
-    0: bronze_sword,
+    0: WEAPONS[0],
 }
 
 var unlockedSHIELDS = {
-    0: brown_shield,
+    0: SHIELDS[0],
 }
 
 func _ready():

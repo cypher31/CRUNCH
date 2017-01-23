@@ -6,11 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35, 35 )
+extents = Vector2( 32, 32 )
 
 [node name="EnemyFight" type="Node2D" groups=[ "enemyFight" ]]
-
-transform/pos = Vector2( 32, -38 )
 
 [node name="Timers" type="Node" parent="."]
 
@@ -30,15 +28,18 @@ autostart = false
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemyFight" ]]
 
-transform/pos = Vector2( 3, 3 )
+transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+__meta__ = { "_edit_group_":true }
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
+transform/pos = Vector2( 4.76837e-06, 2.5034e-06 )
+transform/scale = Vector2( 0.914286, 0.914286 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 72, 0, 70, 70 )
@@ -46,6 +47,8 @@ region_rect = Rect2( 72, 0, 70, 70 )
 [node name="SpriteDead" type="Sprite" parent="KinematicBody2D"]
 
 visibility/opacity = 0.0
+transform/pos = Vector2( 4.76837e-06, 2.5034e-06 )
+transform/scale = Vector2( 0.914286, 0.914286 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 0, 0, 70, 70 )
@@ -68,6 +71,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemHolder" type="Node2D" parent="KinematicBody2D"]
+
+transform/pos = Vector2( 125, 3 )
 
 [connection signal="timeout" from="Timers/Timer" to="KinematicBody2D" method="_on_Timer_timeout"]
 

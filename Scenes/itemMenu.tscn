@@ -141,6 +141,12 @@ shortcut = null
 text = "BACK"
 flat = false
 
+[connection signal="button_selected" from="CanvasLayer/helmScroll/helm" to="CanvasLayer" method="_on_helm_button_selected"]
+
+[connection signal="button_selected" from="CanvasLayer/weaponScroll/weapon" to="CanvasLayer" method="_on_weapon_button_selected"]
+
+[connection signal="button_selected" from="CanvasLayer/shieldScroll/shield" to="CanvasLayer" method="_on_shield_button_selected"]
+
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_Button_pressed"]
 
 

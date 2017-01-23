@@ -11,7 +11,7 @@ var playerStartPosition
 var playerPressedButton = false
 var playerRestart = false
 var playerBlocking = false
-var playerScore = 0
+var playerScore = 500000
 var currentButtonPrompt = null
 
 #player equipment
@@ -59,21 +59,21 @@ var gold_sword = preload("res://Assets/eq_gold_sword.png")
 #Set equipment dictionaries setup as:: [item, level]
 #Head items
 var HELMS = {
-    0: [red_helm, 1, 100000],
-    1: [blue_helm, 2, 200000],
-    2: [gold_helm, 3, 300000]
+    0: [red_helm, 1, 100000, "Red Helm"],
+    1: [blue_helm, 2, 200000, "Blue Helm"],
+    2: [gold_helm, 3, 300000, "Gold Helm"]
 }
 #Weapon items
 var WEAPONS = {
-    0: [bronze_sword, 1, 100000],
-    1: [silver_sword, 2, 200000],
-    2: [gold_sword, 3, 300000]
+    0: [bronze_sword, 1, 100000, "Bronze Sword"],
+    1: [silver_sword, 2, 200000, "Silver Sword"],
+    2: [gold_sword, 3, 300000, "Gold Sword"]
 }
 #Shield items
 var SHIELDS = {
-    0: [brown_shield, 1, 100000],
-    1: [silver_shield, 2, 200000],
-    2: [gold_shield, 3, 300000]
+    0: [brown_shield, 1, 100000, "Brown Shield"],
+    1: [silver_shield, 2, 200000, "Silver Shield"],
+    2: [gold_shield, 3, 300000, "Gold Shield"]
 }
 
 #Unlocked items

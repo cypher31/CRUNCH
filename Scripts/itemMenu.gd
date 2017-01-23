@@ -94,7 +94,7 @@ func buy_It_Accepted():
 func _on_helm_button_selected( button_idx ):
 	#delete last pop up if new button is selected
 	if(!newPopUp == null):
-		newPopUp.queue_free()
+		newPopUp.hide()
 		
 	#Create a new pop up
 	if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(get_node("helmScroll/helm").get_selected())):
@@ -116,7 +116,7 @@ func _on_helm_button_selected( button_idx ):
 func _on_weapon_button_selected( button_idx ):
 	#delete last pop up if new button is selected
 	if(!newPopUp == null):
-		newPopUp.queue_free()
+		newPopUp.hide()
 		
 	#Create a new pop up
 	if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_tooltip(get_node("weaponScroll/weapon").get_selected())):
@@ -138,7 +138,7 @@ func _on_weapon_button_selected( button_idx ):
 func _on_shield_button_selected( button_idx ):
 	#delete last pop up if new button is selected
 	if(!newPopUp == null):
-		newPopUp.queue_free()
+		newPopUp.hide()
 		
 	#Create a new pop up
 	if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(button_idx)):

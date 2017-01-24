@@ -9,7 +9,7 @@ func _ready():
 	var randNumber = null
 	
 	#Drop chance percentage
-	var dropChancePercent = 50
+	var dropChancePercent = 25
 	var dropChancePercentCheck = rand_range(0,100)
 	
 	#Randomly choose an item class & then choose an item randomly from that dictionary

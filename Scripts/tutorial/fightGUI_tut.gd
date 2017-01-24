@@ -2,13 +2,16 @@ extends Control
 
 var time
 
+var promptHolder
+var prompt
+
 var new_button
-var buttonCheck
+var buttonCheck = 1
 var spawnBullet = true
 var t 
 var isTweening = false
 var distance = 768
-var duration = 1.25
+var duration = 2
 
 var leftButton = preload("res://Scenes/leftButton.tscn")
 var rightButton = preload("res://Scenes/rightButton.tscn")
@@ -16,7 +19,10 @@ var blockButton = preload("res://Scenes/blockButton.tscn")
 
 func _ready():
 	time = 1
+	
 	set_fixed_process(true)
+	set_process_input(true)
+	
 	get_node("/root/global").stopButtonPrompts = false
 
 	get_node("/root/global").levelText = "Dungeon_Fight"
@@ -39,29 +45,61 @@ func _fixed_process(delta):
 		spawnBullet = false
 		get_node("buttonTimer").set_wait_time(duration)
 		get_node("buttonTimer").start()
-		buttonCheck = rand_range(0, 15)
 		
 		#instance left button prompt
-		if(buttonCheck <= 5):
+		if(buttonCheck == 1):
 			new_button = leftButton.instance()
 			get_node("/root/global").currentButtonPrompt = "left"
 			get_node("promptSpawn").add_child(new_button)
 			new_button.set_size(Vector2(64,64))
 			
+			#show tutorial prompt
+			if(!promptHolder == null):
+				promptHolder.queue_free()
+				
+			promptHolder = Node2D.new()
+			get_node("tutPrompt").add_child(promptHolder)
+			
+			prompt = Label.new()
+			promptHolder.add_child(prompt)
+			prompt.set_text("Press A!")
+			
 		#instance right button prompt
-		if(buttonCheck > 5 && buttonCheck <= 10):
+		if(buttonCheck == 2):
 			new_button = rightButton.instance()
 			get_node("/root/global").currentButtonPrompt = "right"
 			get_node("promptSpawn").add_child(new_button)
 			new_button.set_size(Vector2(64,64))
+			
+			#show tutorial prompt
+			if(!promptHolder == null):
+				promptHolder.queue_free()
+				
+			promptHolder = Node2D.new()
+			get_node("tutPrompt").add_child(promptHolder)
+			
+			prompt = Label.new()
+			promptHolder.add_child(prompt)
+			prompt.set_text("Press D!")
 		
 		#instance block button prompt
-		if(buttonCheck > 10 && buttonCheck <= 15):
+		if(buttonCheck == 3):
 			new_button = blockButton.instance()
 			get_node("/root/global").currentButtonPrompt = "block"
 			get_node("promptSpawn").add_child(new_button)
 			new_button.set_size(Vector2(64,64))
-			duration *= 1.0
+			buttonCheck = 0
+			
+			#show tutorial prompt
+			if(!promptHolder == null):
+				promptHolder.queue_free()
+				
+			promptHolder = Node2D.new()
+			get_node("tutPrompt").add_child(promptHolder)
+			
+			prompt = Label.new()
+			promptHolder.add_child(prompt)
+			prompt.set_text("Press A + D!")
 			
 			get_node("/root/global").playerPressedButton = true
 		
@@ -73,12 +111,13 @@ func _fixed_process(delta):
 		t.start()
 		isTweening = true
 		
+		
 func end_label():
 	new_button.queue_free()
 	t.queue_free()
 	isTweening = false
 	get_node("/root/global").currentButtonPrompt = "none"
-	duration = 1.0
+	buttonCheck += 1
 	
 	if(get_node("/root/global").playerPressedButton == true):
 		get_node("/root/global").playerPressedButton = false

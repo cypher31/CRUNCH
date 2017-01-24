@@ -3,13 +3,13 @@
 [ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=1]
 [ext_resource path="res://Scenes/PlayerFight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/EnemyFight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/fightGUI.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/tutorial/fightGUI_tut.gd" type="Script" id=4]
 [ext_resource path="res://Assets/ui_timing_bar.tex" type="Texture" id=5]
 [ext_resource path="res://Assets/Fonts/MainMenu Font.fnt" type="BitmapFont" id=6]
 [ext_resource path="res://Assets/ui_player_health.tex" type="Texture" id=7]
 [ext_resource path="res://Assets/ui_enemy_health.tex" type="Texture" id=8]
 
-[node name="Dungeon_Fight" type="Node"]
+[node name="Dungeon_Fight_Tut" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -197,6 +197,11 @@ radial_fill/center_offset = Vector2( 0, 0 )
 [node name="promptSpawn" type="Node2D" parent="Camera2D/fightGUI"]
 
 transform/pos = Vector2( 384, -128 )
+
+[node name="tutPrompt" type="Node2D" parent="Camera2D/fightGUI"]
+
+transform/pos = Vector2( -288, 96 )
+transform/scale = Vector2( 2, 2 )
 
 [connection signal="timeout" from="Camera2D/fightGUI/buttonTimer" to="Camera2D/fightGUI" method="_on_buttonTimer_timeout"]
 

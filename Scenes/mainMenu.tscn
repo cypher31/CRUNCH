@@ -78,7 +78,7 @@ toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
 shortcut = null
-text = "quit"
+text = "Quit"
 flat = false
 items = [  ]
 
@@ -136,5 +136,7 @@ __meta__ = { "_edit_lock_":true }
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/play" to="." method="_on_play_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/items" to="." method="_on_items_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
 
 

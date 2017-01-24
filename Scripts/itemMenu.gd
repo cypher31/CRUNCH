@@ -12,13 +12,13 @@ var buyItemPopUp = preload("res://Scenes/buyItemPopUp.tscn")
 
 func _ready():
 	for i in range(get_node("/root/global").HELMS.size()):
-		get_node("helmScroll/helm").add_button("",str(get_node("/root/global").HELMS[i][2]))
+		get_node("helmScroll/helm").add_button(str(get_node("/root/global").HELMS[i][2]), "")
 		
 	for i in range(get_node("/root/global").WEAPONS.size()):
-		get_node("weaponScroll/weapon").add_button("",str(get_node("/root/global").WEAPONS[i][2]))
+		get_node("weaponScroll/weapon").add_button(str(get_node("/root/global").WEAPONS[i][2]), "")
 		
 	for i in range(get_node("/root/global").SHIELDS.size()):
-		get_node("shieldScroll/shield").add_button("",str(get_node("/root/global").SHIELDS[i][2]))
+		get_node("shieldScroll/shield").add_button(str(get_node("/root/global").SHIELDS[i][2]), "")
 	
 	set_fixed_process(true)
 	pass
@@ -28,14 +28,17 @@ func _fixed_process(delta):
 	for i in range(get_node("/root/global").HELMS.size()):
 		if(get_node("/root/global").unlockedHELMS.has(i)):
 			get_node("helmScroll/helm").set_button_icon(i, get_node("/root/global").unlockedHELMS[i][0])
+			get_node("helmScroll/helm").set_button_text(i, "")
 		
 	for i in range(get_node("/root/global").WEAPONS.size()):
 		if(get_node("/root/global").unlockedWEAPONS.has(i)):
 			get_node("weaponScroll/weapon").set_button_icon(i, get_node("/root/global").unlockedWEAPONS[i][0])
+			get_node("weaponScroll/weapon").set_button_text(i, "")
 		
 	for i in range(get_node("/root/global").SHIELDS.size()):
 		if(get_node("/root/global").unlockedSHIELDS.has(i)):
 			get_node("shieldScroll/shield").set_button_icon(i, get_node("/root/global").unlockedSHIELDS[i][0])
+			get_node("shieldScroll/shield").set_button_text(i, "")
 	
 	
 	#Set player equipment during gameplay
@@ -98,12 +101,14 @@ func _on_helm_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedHELMS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(get_node("helmScroll/helm").get_selected())):
+		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_text(get_node("helmScroll/helm").get_selected())):
 			get_node("/root/global").selectedHelm = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)
 			newPopUp.show()
-			newPopUp.set_text("Buy" + " " + get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][3] + " for "+ str(get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][2]) + " gold?")
+			#set pop up text
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][3] + " for "+ str(get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][2]) + " gold?" + 
+			"\nLevel: " + str(get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][1]))
 			
 			canBuy = false
 			
@@ -121,12 +126,14 @@ func _on_weapon_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedWEAPONS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_tooltip(get_node("weaponScroll/weapon").get_selected())):
+		if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_text(get_node("weaponScroll/weapon").get_selected())):
 			get_node("/root/global").selectedWeapon = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)
 			newPopUp.show()
-			newPopUp.set_text("Buy" + " " + get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][3] + " for "+ str(get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][2]) + " gold?")
+			#set pop up text
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][3] + " for "+ str(get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][2]) + " gold?" + 
+			"\nLevel: " + str(get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][1]))
 			
 			canBuy = false
 			
@@ -144,12 +151,14 @@ func _on_shield_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedSHIELDS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(button_idx)):
+		if(str(get_node("/root/global").playerScore) >= get_node("shieldScroll/shield").get_button_text(button_idx)):
 			get_node("/root/global").selectedShield = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)
 			newPopUp.show()
-			newPopUp.set_text("Buy" + " " + get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][3] + " for "+ str(get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][2]) + " gold?")
+			#set pop up text
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][3] + " for "+ str(get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][2]) + " gold?" + 
+			"\nLevel: " + str(get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][1]))
 			
 			helms = false
 			weapons = false

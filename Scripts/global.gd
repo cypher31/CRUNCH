@@ -1,6 +1,7 @@
 extends Node
 
 #User globals
+var isTutorial = true
 
 #player globals
 var playerCurrentCombo = 0
@@ -11,7 +12,7 @@ var playerStartPosition
 var playerPressedButton = false
 var playerRestart = false
 var playerBlocking = false
-var playerScore = 500000
+var playerScore = 200000
 var currentButtonPrompt = null
 
 #player equipment

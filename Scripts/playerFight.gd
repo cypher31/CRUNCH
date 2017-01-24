@@ -50,6 +50,7 @@ func _fixed_process(delta):
 		get_tree().change_scene("res://Scenes/Dungeon.tscn")
 		get_node("/root/global").timer = true
 		
+	#Player block logic
 	if(block == true && get_node("/root/global").playerBlocking == false && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
 		#set blocking true
 		get_node("/root/global").playerCurrentCombo += 1

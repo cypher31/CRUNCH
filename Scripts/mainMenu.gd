@@ -17,3 +17,8 @@ func _on_play_pressed():
 func _on_items_pressed():
 	get_tree().change_scene("res://Scenes/itemMenu.tscn")
 	pass # replace with function body
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+	pass # replace with function body

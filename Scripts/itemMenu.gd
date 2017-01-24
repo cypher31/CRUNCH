@@ -97,20 +97,21 @@ func _on_helm_button_selected( button_idx ):
 		newPopUp.hide()
 		
 	#Create a new pop up
-	if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(get_node("helmScroll/helm").get_selected())):
-		get_node("/root/global").selectedHelm = button_idx
-		newPopUp = buyItemPopUp.instance()
-		self.add_child(newPopUp)
-		newPopUp.show()
-		newPopUp.set_text("Buy" + " " + get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][3] + " for "+ str(get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][2]) + " gold?")
-		
-		canBuy = false
-		
-		helms = true
-		weapons = false
-		shields = false
-		
-		newPopUp.connect("confirmed", self, "buy_It_Accepted")
+	if(!get_node("/root/global").unlockedHELMS.has(button_idx)):
+		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(get_node("helmScroll/helm").get_selected())):
+			get_node("/root/global").selectedHelm = button_idx
+			newPopUp = buyItemPopUp.instance()
+			self.add_child(newPopUp)
+			newPopUp.show()
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][3] + " for "+ str(get_node("/root/global").HELMS[get_node("/root/global").selectedHelm][2]) + " gold?")
+			
+			canBuy = false
+			
+			helms = true
+			weapons = false
+			shields = false
+			
+			newPopUp.connect("confirmed", self, "buy_It_Accepted")
 
 
 func _on_weapon_button_selected( button_idx ):
@@ -119,20 +120,21 @@ func _on_weapon_button_selected( button_idx ):
 		newPopUp.hide()
 		
 	#Create a new pop up
-	if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_tooltip(get_node("weaponScroll/weapon").get_selected())):
-		get_node("/root/global").selectedWeapon = button_idx
-		newPopUp = buyItemPopUp.instance()
-		self.add_child(newPopUp)
-		newPopUp.show()
-		newPopUp.set_text("Buy" + " " + get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][3] + " for "+ str(get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][2]) + " gold?")
-		
-		canBuy = false
-		
-		helms = false
-		weapons = true
-		shields = false
-		
-		newPopUp.connect("confirmed", self, "buy_It_Accepted")
+	if(!get_node("/root/global").unlockedWEAPONS.has(button_idx)):
+		if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_tooltip(get_node("weaponScroll/weapon").get_selected())):
+			get_node("/root/global").selectedWeapon = button_idx
+			newPopUp = buyItemPopUp.instance()
+			self.add_child(newPopUp)
+			newPopUp.show()
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][3] + " for "+ str(get_node("/root/global").WEAPONS[get_node("/root/global").selectedWeapon][2]) + " gold?")
+			
+			canBuy = false
+			
+			helms = false
+			weapons = true
+			shields = false
+			
+			newPopUp.connect("confirmed", self, "buy_It_Accepted")
 
 
 func _on_shield_button_selected( button_idx ):
@@ -141,15 +143,16 @@ func _on_shield_button_selected( button_idx ):
 		newPopUp.hide()
 		
 	#Create a new pop up
-	if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(button_idx)):
-		get_node("/root/global").selectedShield = button_idx
-		newPopUp = buyItemPopUp.instance()
-		self.add_child(newPopUp)
-		newPopUp.show()
-		newPopUp.set_text("Buy" + " " + get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][3] + " for "+ str(get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][2]) + " gold?")
-		
-		helms = false
-		weapons = false
-		shields = true
-		
-		newPopUp.connect("confirmed", self, "buy_It_Accepted")
+	if(!get_node("/root/global").unlockedSHIELDS.has(button_idx)):
+		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_tooltip(button_idx)):
+			get_node("/root/global").selectedShield = button_idx
+			newPopUp = buyItemPopUp.instance()
+			self.add_child(newPopUp)
+			newPopUp.show()
+			newPopUp.set_text("Buy" + " " + get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][3] + " for "+ str(get_node("/root/global").SHIELDS[get_node("/root/global").selectedShield][2]) + " gold?")
+			
+			helms = false
+			weapons = false
+			shields = true
+			
+			newPopUp.connect("confirmed", self, "buy_It_Accepted")

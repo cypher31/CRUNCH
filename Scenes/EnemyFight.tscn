@@ -28,7 +28,6 @@ autostart = false
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemyFight" ]]
 
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -71,8 +70,6 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemHolder" type="Node2D" parent="KinematicBody2D"]
-
-transform/pos = Vector2( 125, 3 )
 
 [connection signal="timeout" from="Timers/Timer" to="KinematicBody2D" method="_on_Timer_timeout"]
 

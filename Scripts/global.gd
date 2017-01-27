@@ -90,5 +90,11 @@ var unlockedSHIELDS = {
     0: SHIELDS[0],
 }
 
+#ENEMIES
+
+var slime = preload("res://Assets/Enemies/SlimeWalk1.png")
+var slime_dead = preload("res://Assets/Enemies/SlimeDead.png")
+
+
 func _ready():
 	pass

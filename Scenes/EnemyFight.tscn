@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/enemyFight.gd" type="Script" id=1]
-[ext_resource path="res://Assets/tiles_spritesheet.tex" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/slimeWalk1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/slimeDead.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,23 +34,20 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-__meta__ = { "_edit_group_":true }
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
-transform/pos = Vector2( 4.76837e-06, 2.5034e-06 )
+transform/pos = Vector2( 5e-06, 19 )
 transform/scale = Vector2( 0.914286, 0.914286 )
 texture = ExtResource( 2 )
-region = true
 region_rect = Rect2( 72, 0, 70, 70 )
 
 [node name="SpriteDead" type="Sprite" parent="KinematicBody2D"]
 
 visibility/opacity = 0.0
-transform/pos = Vector2( 4.76837e-06, 2.5034e-06 )
+transform/pos = Vector2( 0, 26.5 )
 transform/scale = Vector2( 0.914286, 0.914286 )
-texture = ExtResource( 2 )
-region = true
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 70, 70 )
 
 [node name="playerCheck" type="Area2D" parent="KinematicBody2D"]
@@ -62,6 +60,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
 
 [node name="playerCheck" type="CollisionShape2D" parent="KinematicBody2D/playerCheck"]
 

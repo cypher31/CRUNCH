@@ -6,15 +6,16 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35, 35 )
+extents = Vector2( 32, 32 )
 
 [node name="Enemy" type="Node2D"]
 
-transform/pos = Vector2( 32, -38 )
+transform/pos = Vector2( 32, -32 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[ "enemyRun" ]]
 
-transform/pos = Vector2( 3, 3 )
+transform/pos = Vector2( -8.17776e-05, 2.38419e-07 )
+transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -23,6 +24,8 @@ script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
+transform/pos = Vector2( -1.43051e-06, -1.5 )
+transform/scale = Vector2( 0.914286, 0.957143 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 72, 0, 70, 70 )

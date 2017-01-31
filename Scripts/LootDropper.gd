@@ -9,12 +9,12 @@ func _ready():
 	var randNumber = null
 	
 	#Drop chance percentage
-	var dropChancePercent = 25
+	var dropChancePercent = 10
 	var dropChancePercentCheck = rand_range(0,100)
 	
 	#Randomly choose an item class & then choose an item randomly from that dictionary
 		#Check if chance of item dropping is true
-	if(dropChancePercentCheck >= dropChancePercent):
+	if(dropChancePercentCheck <= dropChancePercent):
 		if(chooseItemClass == 0):
 			#choose random item
 			randNumber = randi() % get_node("/root/global").HELMS.size()

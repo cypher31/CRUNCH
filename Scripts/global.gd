@@ -1,7 +1,7 @@
 extends Node
 
 #User globals
-var isTutorial = true
+var isTutorial = false
 
 #player globals
 var playerCurrentCombo = 0
@@ -12,7 +12,7 @@ var playerStartPosition
 var playerPressedButton = false
 var playerRestart = false
 var playerBlocking = false
-var playerScore = 200000
+var playerScore = 0
 var currentButtonPrompt = null
 
 #player equipment
@@ -32,7 +32,7 @@ var enemyAttack = false
 var enemyArmor
 
 #world variables
-var coin_gold_points = 5.0
+var coin_gold_points = 25.0
 var timer = true
 var coinsToMultiply = 1
 var stopButtonPrompts = false
@@ -91,10 +91,10 @@ var unlockedSHIELDS = {
 }
 
 #ENEMIES
-
-var slime = preload("res://Assets/Enemies/SlimeWalk1.png")
-var slime_dead = preload("res://Assets/Enemies/SlimeDead.png")
+var slime = preload("res://Assets/Enemies/slimeWalk1.png")
+var slime_dead = preload("res://Assets/Enemies/slimeDead.png")
 
 
 func _ready():
+	randomize()
 	pass

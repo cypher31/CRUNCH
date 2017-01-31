@@ -30,12 +30,14 @@ shortcut = null
 
 [node name="Sprite" type="Sprite" parent="blockButton"]
 
-transform/pos = Vector2( -32, 0 )
+transform/pos = Vector2( -64, 0 )
+transform/scale = Vector2( 1.28, 1.28 )
 texture = ExtResource( 1 )
 
 [node name="Sprite1" type="Sprite" parent="blockButton"]
 
-transform/pos = Vector2( 32, 0 )
+transform/pos = Vector2( 64, 0 )
+transform/scale = Vector2( 1.28, 1.28 )
 texture = ExtResource( 2 )
 flip_h = true
 

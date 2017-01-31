@@ -19,8 +19,8 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
+margin/left = -64.0
+margin/top = -64.0
 margin/right = 70.0
 margin/bottom = 70.0
 toggle_mode = false
@@ -29,6 +29,8 @@ shortcut = null
 
 [node name="Sprite" type="Sprite" parent="rightButton"]
 
+transform/pos = Vector2( 64, 64 )
+transform/scale = Vector2( 1.28, 1.28 )
 texture = ExtResource( 1 )
 modulate = Color( 1, 0, 0, 1 )
 

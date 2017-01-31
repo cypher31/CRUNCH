@@ -42,12 +42,11 @@ func _on_playerCheck_body_enter( body ):
 	
 	#if enemy enters player body and enemy is not attacking - enemy loses health
 	if(body.is_in_group("playerFight") && get_node("/root/global").enemyHealth > 0 && !get_node("/root/global").enemyAttack == true):
-		get_node("/root/global").enemyHealth -=  get_node("/root/global").playerAttackDmg / get_node("/root/global").enemyArmor
+		get_node("/root/global").enemyHealth -=  (get_node("/root/global").playerAttackDmg * (get_node("/root/global").playerLevel) / 4) / get_node("/root/global").enemyArmor
 	
 	#if enemy enters player body and player is not blocking - player loses health
 	if(body.is_in_group("playerFight") && get_node("/root/global").enemyAttack == true && get_node("/root/global").playerBlocking == false):
-		print("true")
-		get_node("/root/global").playerCurrentHealth -= 25 #change to enemy attack variable
+		get_node("/root/global").playerCurrentHealth -= (25 - (get_node("/root/global").playerLevel / 3) * 1.25)  #change to enemy attack variable
 		get_node("/root/global").playerCurrentCombo = 0
 	
 	#if enemy enters player body and player is blocking - enemy loses some health
@@ -77,7 +76,7 @@ func _on_Timer_timeout():
 	pass # replace with function body
 	
 func coinSpawn():
-	for i in range(rand_range(1,100)):
+	for i in range(rand_range(10,50)):
 		var gold_coin = coin.instance()
 		get_parent().get_node("KinematicBody2D/itemHolder").add_child(gold_coin)
 		coinCount = get_parent().get_node("KinematicBody2D/itemHolder").get_child_count()

@@ -112,15 +112,15 @@ max_lines_visible = -1
 
 [node name="Label" type="Label" parent="Camera2D/fightGUI/playerCombo"]
 
-rect/scale = Vector2( 0.5, 0.5 )
+rect/scale = Vector2( 0.4, 0.4 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -32.0
 margin/top = -32.0
-margin/right = 224.0
-margin/bottom = 35.0
+margin/right = 288.0
+margin/bottom = 32.0
 custom_fonts/font = ExtResource( 6 )
 text = "COMBO"
 align = 1
@@ -136,9 +136,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -448.0
-margin/top = -232.0
-margin/right = -378.0
-margin/bottom = -197.0
+margin/top = -224.0
+margin/right = -416.0
+margin/bottom = -192.0
 text = "HI"
 align = 1
 valign = 1

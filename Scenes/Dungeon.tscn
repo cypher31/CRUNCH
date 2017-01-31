@@ -1,66 +1,217 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/Dungeon.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/PlayerRun.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/EnemyRun.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=5]
+[ext_resource path="res://Assets/Fonts/MainMenu Font.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Scenes/PlayerRun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/EnemyRun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/comboUp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Tileset.xml" type="TileSet" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 505.193, 10 )
 
 [node name="Dungeon" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
+[node name="instruction" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 128.0
+margin/top = -256.0
+margin/right = 640.0
+margin/bottom = -192.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press A+D To Jump"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Player" type="Node" parent="."]
 
-editor/display_folded = true
+[node name="Player" parent="Player" instance=ExtResource( 3 )]
 
-[node name="Player" parent="Player" instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 242, -178 )
+transform/pos = Vector2( 224, -32 )
 
 [node name="Enemies" type="Node" parent="."]
 
-editor/display_folded = true
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
+transform/pos = Vector2( 1120, -32 )
 
-transform/pos = Vector2( 1082, -38 )
-
-[node name="Enemy 2" parent="Enemies" instance=ExtResource( 3 )]
+[node name="Enemy 2" parent="Enemies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 5282, -38 )
 
-[node name="Coins" type="Node" parent="."]
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
 
-editor/display_folded = true
+transform/pos = Vector2( 5282, -38 )
 
-[node name="Coin" parent="Coins" instance=ExtResource( 4 )]
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 2132, -248 )
+transform/pos = Vector2( 5282, -38 )
 
-[node name="Coin1" parent="Coins" instance=ExtResource( 4 )]
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 2552, -318 )
+transform/pos = Vector2( 7008, -32 )
 
-[node name="Coin2" parent="Coins" instance=ExtResource( 4 )]
+[node name="Enemy10" parent="Enemies" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 2972, -388 )
+transform/pos = Vector2( 10464, -32 )
 
-[node name="Coin3" parent="Coins" instance=ExtResource( 4 )]
+[node name="Enemy11" parent="Enemies" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 3392, -458 )
+transform/pos = Vector2( 9120, -32 )
 
-[node name="Coin4" parent="Coins" instance=ExtResource( 4 )]
+[node name="Enemy12" parent="Enemies" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 3812, -528 )
+transform/pos = Vector2( 8096, -32 )
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 4192, -32 )
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2784, -32 )
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1568, -32 )
+
+[node name="comboUp" type="Node" parent="."]
+
+[node name="Label" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 512.0
+margin/top = -128.0
+margin/right = 768.0
+margin/bottom = 128.0
+
+[node name="Label1" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 3328.0
+margin/top = -512.0
+margin/right = 3584.0
+margin/bottom = -256.0
+
+[node name="Label5" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 3712.0
+margin/top = -576.0
+margin/right = 3968.0
+margin/bottom = -320.0
+
+[node name="Label14" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 4032.0
+margin/top = -640.0
+margin/right = 4288.0
+margin/bottom = -384.0
+
+[node name="Label6" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 4096.0
+margin/top = -448.0
+margin/right = 4352.0
+margin/bottom = -192.0
+
+[node name="Label7" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 4160.0
+margin/top = -256.0
+margin/right = 4416.0
+margin/bottom = 0.0
+
+[node name="Label8" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 11712.0
+margin/top = -128.0
+margin/right = 11968.0
+margin/bottom = 128.0
+
+[node name="Label11" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 11840.0
+margin/top = -128.0
+margin/right = 12096.0
+margin/bottom = 128.0
+
+[node name="Label12" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 11968.0
+margin/top = -128.0
+margin/right = 12224.0
+margin/bottom = 128.0
+
+[node name="Label9" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 8512.0
+margin/top = -256.0
+margin/right = 8768.0
+margin/bottom = 0.0
+
+[node name="Label16" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 9792.0
+margin/top = -256.0
+margin/right = 10048.0
+margin/bottom = 0.0
+
+[node name="Label10" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 6144.0
+margin/top = -256.0
+margin/right = 6400.0
+margin/bottom = 0.0
+
+[node name="Label15" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 7552.0
+margin/top = -256.0
+margin/right = 7808.0
+margin/bottom = 0.0
+
+[node name="Label2" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 2880.0
+margin/top = -448.0
+margin/right = 3136.0
+margin/bottom = -192.0
+
+[node name="Label3" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 2048.0
+margin/top = -256.0
+margin/right = 2304.0
+margin/bottom = 0.0
+
+[node name="Label13" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 2432.0
+margin/top = -384.0
+margin/right = 2688.0
+margin/bottom = -128.0
+
+[node name="Label4" parent="comboUp" instance=ExtResource( 5 )]
+
+margin/left = 1280.0
+margin/top = -192.0
+margin/right = 1536.0
+margin/bottom = 64.0
 
 [node name="setPieces" type="Node" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 5 )
-cell/size = Vector2( 70, 70 )
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 32
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 cell/half_offset = 2
@@ -72,7 +223,30 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -393164, 0, -393163, 0, -327634, 0, -327633, 0, -262104, 0, -262103, 0, -196574, 0, -196573, 0, -131044, 0, -131043, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 28, 0, 29, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 35, 0, 36, 0, 37, 0, 38, 0, 39, 0, 40, 0, 41, 0, 42, 0, 43, 0, 44, 0, 45, 0, 46, 0, 47, 0, 48, 0, 49, 0, 50, 0, 51, 0, 52, 0, 53, 0, 54, 0, 55, 0, 56, 0, 57, 0, 58, 0, 59, 0, 60, 0, 61, 0, 62, 0, 63, 0, 64, 0, 65, 0, 66, 0, 67, 0, 68, 0, 69, 0, 70, 0, 71, 0, 72, 0, 73, 0, 74, 0, 75, 0, 76, 0, 77, 0, 78, 0, 79, 0, 80, 0, 81, 0, 82, 0, 83, 0, 84, 0, 85, 0, 86, 0, 87, 0, 88, 0, 89, 0, 90, 0, 91, 0, 92, 0, 93, 0, 94, 0, 95, 0, 96, 0, 97, 0, 98, 0, 99, 0, 100, 0, 101, 0, 102, 0, 103, 0, 104, 0, 105, 0, 106, 0, 107, 0, 108, 0, 109, 0, 110, 0, 111, 0, 112, 0, 113, 0, 114, 0, 115, 0, 116, 0, 117, 0, 118, 0, 119, 0, 120, 0, 121, 0, 122, 0, 123, 0, 124, 0, 125, 0, 126, 0, 127, 0, 128, 0, 129, 0, 130, 0, 131, 0, 132, 0, 133, 0, 134, 0, 135, 0, 136, 0, 137, 0, 138, 0, 139, 0, 140, 0, 141, 0, 142, 0, 143, 0, 144, 0, 145, 0, 146, 0, 147, 0, 148, 0, 149, 0, 150, 0, 151, 0, 152, 0, 153, 0, 154, 0, 155, 0, 156, 0, 157, 0, 158, 0, 159, 0, 160, 0, 161, 0, 162, 0, 163, 0, 164, 0, 165, 0, 166, 0, 167, 0, 168, 0, 169, 0, 170, 0, 171, 0, 172, 0, 173, 0, 174, 0, 175, 0, 176, 0, 177, 0, 178, 0, 179, 0, 180, 0, 181, 0, 182, 0, 183, 0, 184, 0, 185, 0, 186, 0, 187, 0, 188, 0, 189, 0, 190, 0, 191, 0, 192, 0, 193, 0, 194, 0, 195, 0, 196, 0, 197, 0, 198, 0, 199, 0, 200, 0, 201, 0, 202, 0, 203, 0, 204, 0, 205, 0, 206, 0, 207, 0, 208, 0, 209, 0, 210, 0, 211, 0, 212, 0, 213, 0, 214, 0, 215, 0, 216, 0, 65537, 0, 65752, 0, 131288, 0, 196823, 0, 196824, 0, 262359, 0 )
+tile_data = IntArray( -458694, 1, -458693, 1, -458692, 1, -393164, 1, -393163, 1, -393162, 1, -327635, 1, -327634, 1, -327633, 1, -262106, 1, -262105, 1, -262104, 1, -131040, 1, -131039, 1, -131038, 1, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 2, 14, 2, 15, 2, 16, 2, 17, 2, 18, 2, 19, 2, 20, 2, 21, 2, 22, 2, 23, 2, 24, 2, 25, 2, 26, 2, 27, 2, 28, 2, 29, 2, 30, 2, 31, 2, 32, 2, 33, 2, 34, 2, 35, 2, 36, 2, 37, 2, 38, 2, 39, 2, 40, 2, 41, 2, 42, 2, 43, 2, 44, 2, 45, 2, 46, 2, 47, 2, 48, 2, 49, 2, 50, 2, 51, 2, 52, 2, 53, 2, 54, 2, 55, 2, 56, 2, 57, 2, 58, 2, 59, 2, 60, 2, 61, 2, 62, 2, 63, 2, 64, 2, 65, 2, 66, 2, 67, 2, 68, 2, 69, 2, 70, 2, 71, 2, 72, 2, 73, 2, 74, 2, 75, 2, 76, 2, 77, 2, 78, 2, 79, 2, 80, 2, 81, 2, 82, 2, 83, 2, 84, 2, 85, 2, 86, 2, 87, 2, 88, 2, 89, 2, 90, 2, 91, 2, 92, 2, 93, 2, 94, 2, 95, 2, 96, 2, 97, 2, 98, 2, 99, 2, 100, 2, 101, 2, 102, 2, 103, 2, 104, 2, 105, 2, 106, 2, 107, 2, 108, 2, 109, 2, 110, 2, 111, 2, 112, 2, 113, 2, 114, 2, 115, 2, 116, 2, 117, 2, 118, 2, 119, 2, 120, 2, 121, 2, 122, 2, 123, 2, 124, 2, 125, 2, 126, 2, 127, 2, 128, 2, 129, 2, 130, 2, 131, 2, 132, 2, 133, 2, 134, 2, 135, 2, 136, 2, 137, 2, 138, 2, 139, 2, 140, 2, 141, 2, 142, 2, 143, 2, 144, 2, 145, 2, 146, 2, 147, 2, 148, 2, 149, 2, 150, 2, 151, 2, 152, 2, 153, 2, 154, 2, 155, 2, 156, 2, 157, 2, 158, 2, 159, 2, 160, 2, 161, 2, 162, 2, 163, 2, 164, 2, 165, 2, 166, 2, 167, 2, 168, 2, 169, 2, 170, 2, 171, 2, 172, 2, 173, 2, 174, 2, 175, 2, 176, 2, 177, 2, 178, 2, 179, 2, 180, 2, 181, 2, 182, 2, 183, 2, 184, 2, 185, 2, 186, 2, 187, 2, 188, 2, 189, 2, 190, 2 )
 __meta__ = { "_edit_lock_":true }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+transform/pos = Vector2( 12576, 288 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 2.46154, -25.1935, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( -25.1935, 0 )
+transform/scale = Vector2( 1, 2.46154 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
 
 

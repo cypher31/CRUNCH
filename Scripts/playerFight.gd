@@ -15,7 +15,6 @@ var isScale = false
 
 
 func _ready():
-	randomize()
 	get_node("/root/global").stopButtonPrompts = false
 	position = self.get_pos()
 	set_fixed_process(true)
@@ -53,7 +52,7 @@ func _fixed_process(delta):
 	#Player block logic
 	if(block == true && get_node("/root/global").playerBlocking == false && isTweening == false && get_node("/root/global").currentButtonPrompt == "block"):
 		#set blocking true
-		get_node("/root/global").playerCurrentCombo += 1
+		get_node("/root/global").playerCurrentCombo += 1 * ((get_node("/root/global").playerLevel) / 2)
 		get_node("/root/global").playerPressedButton = true
 		
 		get_node("/root/global").playerBlocking = true
@@ -75,7 +74,7 @@ func _input(event):
 		get_node("/root/global").playerPressedButton = true
 		
 		#increase player combo
-		get_node("/root/global").playerCurrentCombo += 1
+		get_node("/root/global").playerCurrentCombo += 1 * ((get_node("/root/global").playerLevel) / 2)
 	
 	if(event.is_action_pressed("right_punch") && isTweening == false && get_node("/root/global").currentButtonPrompt == "right"):
 		#animate player
@@ -90,7 +89,7 @@ func _input(event):
 		get_node("/root/global").playerPressedButton = true
 		
 		#increase player combo
-		get_node("/root/global").playerCurrentCombo += 1
+		get_node("/root/global").playerCurrentCombo += 1 * ((get_node("/root/global").playerLevel) / 2)
 		
 	#damage player if the button they press is wrong
 	if(event.is_action_pressed("left_punch") && isTweening == false && !get_node("/root/global").currentButtonPrompt == "block"):

@@ -26,7 +26,7 @@ func _fixed_process(delta):
 	time -= delta
 	
 	#update player score and combo
-	get_node("playerScore").set_text(str(get_node("/root/global").playerScore))
+	get_node("playerScore").set_text("Gold: " + str(get_node("/root/global").playerScore))
 	get_node("playerCombo").set_text(str(get_node("/root/global").playerCurrentCombo))
 	
 	#update player health
@@ -78,7 +78,7 @@ func end_label():
 	t.queue_free()
 	isTweening = false
 	get_node("/root/global").currentButtonPrompt = "none"
-	duration = 1.0
+	duration = 1.25
 	
 	if(get_node("/root/global").playerPressedButton == true):
 		get_node("/root/global").playerPressedButton = false

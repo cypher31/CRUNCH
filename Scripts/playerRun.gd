@@ -22,12 +22,12 @@ var motion
 var jump = false
 var prev_jump_pressed = false
 var jumping = false
-var grounded
+var grounded = true
 
 func _ready():
 	time = 1
 	if(get_node("/root/global").playerRestart == true):
-		self.set_global_pos(get_node("/root/global").playerStartPosition * Vector2(1.1,1))
+		self.set_global_pos(get_node("/root/global").playerStartPosition + Vector2(74,-32))
 		get_node("/root/global").playerRestart = false
 		
 		#multiply the players current score by the combo to calculate the final score
@@ -79,6 +79,11 @@ func _fixed_process(delta):
 	if(is_colliding()):
 		var n = get_collision_normal()
 		
+		#Jump logic collision norm
+		if(n == Vector2(0,-1)):
+			grounded = true
+		else:
+			grounded = false
 		
 		if(rad2deg(acos(n.dot(Vector2(0, -1)))) < FLOOR_ANGLE_TOLERANCE):
 			#if angle to the up vectors is < agnle tolerance

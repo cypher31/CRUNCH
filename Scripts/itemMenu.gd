@@ -63,11 +63,14 @@ func _fixed_process(delta):
 	#Check player level
 	get_node("/root/global").playerLevel = get_node("/root/global").HEAD[1] + get_node("/root/global").WEAPON[1] + get_node("/root/global").SHIELD[1]
 		
+		
+	#Update player gold count
+	get_node("playerGold").set_text("Gold: " + str(get_node("/root/global").playerScore))
+	
 	pass
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://Scenes/mainMenu.tscn")
-	print(get_node("/root/global").playerLevel)
+	get_tree().change_scene("res://Scenes/Dungeon.tscn")
 	pass # replace with function body
 	
 	#Buy items if player accepts dialog
@@ -101,7 +104,7 @@ func _on_helm_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedHELMS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("helmScroll/helm").get_button_text(get_node("helmScroll/helm").get_selected())):
+		if(get_node("/root/global").playerScore >= int(get_node("helmScroll/helm").get_button_text(button_idx))):
 			get_node("/root/global").selectedHelm = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)
@@ -126,7 +129,7 @@ func _on_weapon_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedWEAPONS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("weaponScroll/weapon").get_button_text(get_node("weaponScroll/weapon").get_selected())):
+		if(get_node("/root/global").playerScore >= int(get_node("weaponScroll/weapon").get_button_text(button_idx))):
 			get_node("/root/global").selectedWeapon = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)
@@ -151,7 +154,7 @@ func _on_shield_button_selected( button_idx ):
 		
 	#Create a new pop up
 	if(!get_node("/root/global").unlockedSHIELDS.has(button_idx)):
-		if(str(get_node("/root/global").playerScore) >= get_node("shieldScroll/shield").get_button_text(button_idx)):
+		if(get_node("/root/global").playerScore >= int(get_node("shieldScroll/shield").get_button_text(button_idx))):
 			get_node("/root/global").selectedShield = button_idx
 			newPopUp = buyItemPopUp.instance()
 			self.add_child(newPopUp)

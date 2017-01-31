@@ -25,6 +25,7 @@ margin/left = 320.0
 margin/top = 320.0
 margin/right = 704.0
 margin/bottom = 512.0
+custom_constants/separation = 64
 alignment = 0
 __meta__ = { "_edit_group_":true }
 
@@ -37,30 +38,12 @@ size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 384.0
-margin/bottom = 61.0
+margin/bottom = 64.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
 shortcut = null
 text = "Play"
-flat = false
-items = [  ]
-
-[node name="items" type="MenuButton" parent="CanvasLayer/VBoxContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 65.0
-margin/right = 384.0
-margin/bottom = 126.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 0
-shortcut = null
-text = "Items"
 flat = false
 items = [  ]
 
@@ -71,7 +54,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 130.0
+margin/top = 128.0
 margin/right = 384.0
 margin/bottom = 192.0
 toggle_mode = false
@@ -134,8 +117,6 @@ tile_data = IntArray( 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 1, 8, 1, 9, 1
 __meta__ = { "_edit_lock_":true }
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/play" to="." method="_on_play_pressed"]
-
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/items" to="." method="_on_items_pressed"]
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
 
